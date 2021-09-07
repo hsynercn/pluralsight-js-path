@@ -1,7 +1,6 @@
 # pluralsight-js-path
-## JavaScript: Getting Started
-
-###Introduction to JavaScript
+## 1. JavaScript: Getting Started
+### 1.1. Introduction to JavaScript
 
 Applications:
 -Web Pages
