@@ -53,6 +53,16 @@ We can add script tag in HTML files to run JS
     alert("Carved Rock Fitness")
 </script>
 ```
-For better practice we can load a seperated JS file
+We can load a seperated JS file
 
+```html
+<script src="./filename.js"></script>
+```
+"." respresents the relative directory of index.html file. 
 
+```html
+<script src="./filename.js"/>
+```
+This is a wrong, older browsers can't handle it.
+
+For HMTL manipulation we need to add scripts tags at the end of index.html, for framework insertion etc. HMTL <head> is a better option.  
