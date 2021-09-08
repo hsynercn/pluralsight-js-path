@@ -66,3 +66,15 @@ We can load a seperated JS file
 This is a wrong, older browsers can't handle it.
 
 For HMTL manipulation we need to add scripts tags at the end of index.html, for framework insertion etc. HMTL <head> is a better option.  
+
+Whitespaces are ignored, spaces, tabs, new lines.
+To check error use f12 dev tools.
+JS is case sensitive, can't mixx up lower and upper cases.
+
+```js
+//single line comment
+
+/*
+Multi line comment
+*/
+```
