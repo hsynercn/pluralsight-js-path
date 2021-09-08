@@ -1,6 +1,6 @@
 # pluralsight-js-path
 ## 1. JavaScript: Getting Started
-### 1.1. Introduction to JavaScript
+### 1.1. Course Overview
 
 Applications:
 -Web Pages
@@ -13,6 +13,8 @@ TypeScript is popular with business apps.
 Apache Cordova for smart phones and tablets.
 Electron for native Windows and macOS native apps.
 NodeJS for backend services.
+
+### 1.2. Introduction to JavaScript
 
 Starting:
 -Install git
@@ -33,7 +35,7 @@ code .
 npm install(for better practice run from cmd not from vs code terminal)
 npm run start
 
-### 1.1. JavaScript Beginnings
+### 1.3. JavaScript Beginnings
 
 Introduction:
 Adding JS code to HTML
@@ -43,6 +45,14 @@ Detecting and fixing errors
 Case sensitivity
 Commenting code
 
-
+We can add script tag in HTML files to run JS
+```html
+<script>
+    //This is not a good practice
+    alert("Hello world");
+    alert("Carved Rock Fitness")
+</script>
+```
+For better practice we can load a seperated JS file
 
 
