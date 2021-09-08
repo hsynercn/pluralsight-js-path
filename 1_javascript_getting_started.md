@@ -19,6 +19,20 @@ Starting:
 -Install npm
 -Install vs code
 
+*In vs code ctrl+' opens the terminal
+
+Test commands:
+git --version
+npm --version
+code
+
+Init project commands:
+git clone https://github.com/pluralsight/web-dev-starter.git
+cd web-dev-starter
+code .
+npm install(for better practice run from cmd not from vs code terminal)
+npm run start
+
 ### 1.1. JavaScript Beginnings
 
 Introduction:
