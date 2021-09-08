@@ -3,10 +3,10 @@
 ### 1.1. Course Overview
 
 Applications:
--Web Pages
--Business Apps
--Utility Apps
--Games
+ - Web Pages
+ - Business Apps
+ - Utility Apps
+ - Games
 
 Unity engine supports JS. 
 TypeScript is popular with business apps.
@@ -16,34 +16,34 @@ NodeJS for backend services.
 
 ### 1.2. Introduction to JavaScript
 
-Starting:
--Install git
--Install npm
--Install vs code
+Starting:  
+Install git  
+Install npm  
+Install vs code  
 
-*In vs code ctrl+' opens the terminal
+In vs code ctrl+' opens the terminal
 
-Test commands:
-git --version
-npm --version
-code
+Test commands:  
+git --version  
+npm --version  
+code  
 
-Init project commands:
-git clone https://github.com/pluralsight/web-dev-starter.git
-cd web-dev-starter
-code .
-npm install(for better practice run from cmd not from vs code terminal)
-npm run start
+Init project commands:  
+git clone https://github.com/pluralsight/web-dev-starter.git  
+cd web-dev-starter  
+code .  
+npm install(for better practice run from cmd not from vs code terminal)  
+npm run start  
 
 ### 1.3. JavaScript Beginnings
 
 Introduction:
-Adding JS code to HTML
-Multiple JS files
-Formatting code
-Detecting and fixing errors
-Case sensitivity
-Commenting code
+- Adding JS code to HTML
+- Multiple JS files
+- Formatting code
+- Detecting and fixing errors
+- Case sensitivity
+- Commenting code
 
 We can add script tag in HTML files to run JS
 ```html
@@ -80,14 +80,14 @@ Multi line comment
 ```
 
 Summary
-Including JS in HTML
--<script></script>
--<script src="./filename.js"></script>
-Formatting Code
--Freely use whitespace
-Detecting Error
-Case Sensitivity
--JS is case sensitive
-Commenting Code
--//single line comment
--/* multiple line comment */
+Including JS in HTML  
+- <script></script>  
+- <script src="./filename.js"></script>  
+Formatting Code  
+- Freely use whitespace  
+Detecting Error  
+Case Sensitivity  
+- JS is case sensitive  
+Commenting Code  
+- //single line comment  
+- /* multiple line comment */  
