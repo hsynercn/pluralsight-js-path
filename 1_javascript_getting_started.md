@@ -78,3 +78,16 @@ JS is case sensitive, can't mixx up lower and upper cases.
 Multi line comment
 */
 ```
+
+Summary
+Including JS in HTML
+-<script></script>
+-<script src="./filename.js"></script>
+Formatting Code
+-Freely use whitespace
+Detecting Error
+Case Sensitivity
+-JS is case sensitive
+Commenting Code
+-//single line comment
+-/* multiple line comment */
