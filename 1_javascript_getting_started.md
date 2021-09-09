@@ -91,3 +91,22 @@ Case Sensitivity
 Commenting Code  
 - //single line comment  
 - /* multiple line comment */  
+
+### 1.3. Variables and Constants
+
+Introduction:
+- What is variables
+- Naming variables
+- Common errors using variables
+- Changing variable values
+- Constants
+- The var keyword
+
+We declare variables with meaningful names.
+
+```js
+let total = 132.333;
+let product = 'Hiking Boots';
+let discounted = true;
+```
+We declare a variable with let keyword.
