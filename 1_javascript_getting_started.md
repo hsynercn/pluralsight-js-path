@@ -111,7 +111,7 @@ let discounted = true;
 ```
 We declare a variable with let keyword.
 
-we can use single quotes or double quotes for strings
+We can use single quotes or double quotes for strings
 ```js
 let welcome = 'welcome';
 let hello = "hello"; 
@@ -124,3 +124,21 @@ let a = 1,
     b = "test", 
     c = false;
 ```
+
+Valid Variable Names
+
+Starts with one of: _ $ letter
+
+Followed by zero or more: _ $ letter number
+
+valid samples:  
+a  
+account  
+account_99  
+accountNumber  
+(generally private variable names start with '_') _accountNumber  
+(generally $ is used for automatically generated code) $accountNumber  
+_1234  
+(for non standart features) __proto__
+
+Camel case example 'accountNumber', because it has a bump in the middle.
