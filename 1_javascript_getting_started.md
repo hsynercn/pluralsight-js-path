@@ -110,3 +110,17 @@ let product = 'Hiking Boots';
 let discounted = true;
 ```
 We declare a variable with let keyword.
+
+we can use single quotes or double quotes for strings
+```js
+let welcome = 'welcome';
+let hello = "hello"; 
+let price = 49.99;
+let discounted = false;
+```
+For better practice we can aling variables like this.
+```js
+let a = 1, 
+    b = "test", 
+    c = false;
+```
