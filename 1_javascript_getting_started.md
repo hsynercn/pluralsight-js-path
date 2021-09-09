@@ -132,13 +132,14 @@ Starts with one of: _ $ letter
 Followed by zero or more: _ $ letter number
 
 valid samples:  
-a  
-account  
-account_99  
-accountNumber  
-(generally private variable names start with '_') _accountNumber  
-(generally $ is used for automatically generated code) $accountNumber  
-_1234  
-(for non standart features) __proto__
-
+```js
+let a = 1;
+let account = 1;
+let account_99 = 1;
+let accountNumber = 1;
+let _accountNumber = 1;//generally private variable names start with '_'
+let $accountNumber = 1;//generally $ is used for automatically generated code  
+let _1234 = 1;
+let __proto__ = 1;//for non standart features 
+```
 Camel case example 'accountNumber', because it has a bump in the middle.
