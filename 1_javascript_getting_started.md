@@ -92,7 +92,7 @@ Commenting Code
 - //single line comment  
 - /* multiple line comment */  
 
-### 1.3. Variables and Constants
+### 1.4. Variables and Constants
 
 Introduction:
 - What is variables
@@ -160,5 +160,14 @@ let first = 1;
 var second = 2;
 ```
 
+### 1.5. Types and Operators
 
+Introduction:
+- Numbers
+- Strings
+- Converting between types
+- Booleans
+- null and undefined
+- Objects and symbols
 
+Numbers
