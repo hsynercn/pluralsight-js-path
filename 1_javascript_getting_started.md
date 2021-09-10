@@ -143,3 +143,22 @@ let _1234 = 1;
 let __proto__ = 1;//for non standart features 
 ```
 Camel case example 'accountNumber', because it has a bump in the middle.
+
+If a variable is not going to change using cosnt is best practice.
+We can't modify const variables, also can't declare them without an initial value.
+```js
+cosnt price = 19.99;
+showMessage(price);
+```
+
+A variable declared with var is defined throughout the program as compared to let.
+First log gives an Uncaught ReferenceError: Cannot access before initialization error, second doesn't give any error, instead it prints 'undefined'.
+```js
+console.log(first);
+console.log(second);
+let first = 1;
+var second = 2;
+```
+
+
+
