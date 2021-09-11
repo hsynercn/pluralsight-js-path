@@ -321,3 +321,42 @@ We do not use ==, if types are different == attempts to convert them to string, 
 |undefined||
 |Nan||
 
+In some cases floating point arithmetic can give problematic results.
+```js
+if (1.1 + 1.3 !== 2.4) {
+    console.log("They are not different");
+}
+```
+To overcome this problem we can use toFixed method, but toFixed method returns a string. We can add a + sign to convert result string to number.  
+```js
+if ( +(1.1 + 1.3).toFixed(2) === 2.4) {
+    console.log("They are different");
+}
+```
+
+if() ... else
+```js
+let price = 20;
+if(price > 20) {
+    console.log("greater than 20");
+} else if() {
+    console.log("less or equal to 20");
+}
+```
+
+Comparing == and ===
+
+JavaScript attempts to convert values while using ==. For better and safer comprasion we use identically equal to symbol ===. 
+```js
+if(1 === "1") {
+    console.log("equal");
+} else {
+    console.log("not equal");//not equal
+}
+
+if(1 == "1") {
+    console.log("equal");//they are equal
+} else {
+    console.log("not equal");
+}
+```
