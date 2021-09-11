@@ -163,7 +163,7 @@ var second = 2;
 ### 1.5. Types and Operators
 
 Introduction  
-Types:  
+Types:
 - Numbers
 - Strings
 - Converting between types
@@ -221,7 +221,7 @@ Number Precision
 let price = 1.1 + 1.3// 2.4000000000000004, not exactly 2.4;
 ```
 
-Strings
+Strings  
 We can use escape notation for special characters.
 ```js
 let msg = 'Hello World';
@@ -268,11 +268,11 @@ let saved = false;// typeof saved is boolean
 saved = !saved;
 ```
 
-null and undefined  
+Null and Undefined  
 null and undefined are two more types of JavaScript, null has one value null and undefined has one value undefined.
 
 ```js
 let saved;//undefined, when they are not initilaized
 saved = 10;
-saved = null;//null, programmer can set a variable to null to wipe out that value' this is a best practice
+saved = null;//null, programmer can set a variable to null to wipe out that value, this is a best practice
 ```
