@@ -276,3 +276,48 @@ let saved;//undefined, when they are not initilaized
 saved = 10;
 saved = null;//null, programmer can set a variable to null to wipe out that value, this is a best practice
 ```
+
+Objects and Symbols
+Last two types.
+
+```js
+let person = {
+    firstName: 'John',
+    lastName: 'Adams'
+};
+console.log(typeof person);//prints object
+console.log(person.firstName);
+```
+Symbols are used for information hiding in objects.
+
+### 1.5. Program Flow
+
+Introduction
+- if ... else Statements
+- Truthy and Falsy Expression
+- Comparing === to ==
+- Ternary Operator
+- Block Scope
+- Loops: for, while, do...while
+
+Conditional if
+```js
+if (5 === 5) {
+    console.log('Yes');
+}
+let state = 'FL';
+if (state !== 'FL') {
+    console.log("NOT FLORIDA")
+}
+```
+We do not use ==, if types are different == attempts to convert them to string, number or boolean.
+
+|falsy|truthy|
+| :---: |:---:|
+|false|EVERYTHING NOT FALSY|
+|0|true|
+|"" or ''|0.5|
+|null|"0"|
+|undefined||
+|Nan||
+
