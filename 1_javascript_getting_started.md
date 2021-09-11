@@ -180,6 +180,7 @@ console.log(typeof fee);//prints string
 
 Arithmetic operations.
 ```js
+let price = 10;
 price = price + 1;
 price = price - 1;
 price = price / 2;
@@ -192,11 +193,43 @@ price /= 2;
 price *= 1;
 price %= 10;
 ```
-Increment operator.
+Increment, decrement operator.
 ```js
 let price = 1;
 ++price;
 price++;
 --price;
 price--;
+```
+Operator Precedence
+
+MDN(Mozilla Developer Network) operator precedence  
+Precedence
+    21: grouping ( ... )
+    15: multiplication/division/remainder -> left-to-right
+    14: addition/substraction -> left-to-right
+
+```js
+let price = 3 + 2 * 2;//result 7
+price = (3 + 2) * 2;// result 10
+```
+
+Number Precision
+
+```js
+let price = 1.1 + 1.3// 2.4000000000000004, not exactly 2.4;
+```
+
+Strings
+We can use escape notation for special characters.
+```js
+let msg = 'Hello World';
+let msg2 = "Hello World";
+let msg3 = "Hello \"World\"";
+```
+We can use backtick for string formatting. Message 4 and 5 are different strings, there are several whitespace differences between them. But if we use them in HTML tags like head whitespace converted into single space.
+```js
+let name = "Name";
+let msg4 = `Hello ${name}`;
+let msg5 = `Hello           ${name}`;
 ```
