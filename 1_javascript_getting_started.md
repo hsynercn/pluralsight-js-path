@@ -171,3 +171,32 @@ Introduction:
 - Objects and symbols
 
 Numbers
+```js
+let price = 19.99;
+let fee = '19.99';
+console.log(typeof price);//prints number
+console.log(typeof fee);//prints string
+```
+
+Arithmetic operations.
+```js
+price = price + 1;
+price = price - 1;
+price = price / 2;
+price = price * 1;
+let modulus = price % 10;
+
+price += 1;
+price -= 1;
+price /= 2;
+price *= 1;
+price %= 10;
+```
+Increment operator.
+```js
+let price = 1;
+++price;
+price++;
+--price;
+price--;
+```
