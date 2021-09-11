@@ -210,7 +210,7 @@ Precedence
     14: addition/substraction -> left-to-right
 
 ```js
-let price = 3 + 2 * 2;//result 7
+let price = 3 + 2 * 2;// result 7
 price = (3 + 2) * 2;// result 10
 ```
 
@@ -232,4 +232,30 @@ We can use backtick for string formatting. Message 4 and 5 are different strings
 let name = "Name";
 let msg4 = `Hello ${name}`;
 let msg5 = `Hello           ${name}`;
+```
+
+Manipulating Strings
+
+```js
+let message = 'Hello';
+message = message.toUpperCase();
+message = message.toLowerCase();
+message = message + ' World';
+```
+
+Converting String and Numbers
+```js
+let amount = 123;
+amount = amount.toString();
+
+let sum = Number.parseFloat("123.12");
+```
+This string is can't be converted to a number, result is Not A Number.
+```js
+//NaN
+let total = Number.parseFloat("AAA123.12");
+```
+We can convert this string to a number, function stops parsing as soon as it hits a not a number.
+```js
+let total = Number.parseFloat("123.12AAAA");
 ```

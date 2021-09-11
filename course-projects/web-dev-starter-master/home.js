@@ -3,15 +3,16 @@
 let welcome = 'welcome'; 
 let price = 0;
 let discounted = false;
-const constPrice = 10.99;
 
 let a = 1, 
     b = "test", 
     c = false;
 
-showMessage(discounted);
-
 price = 19.99;
 
 constPrice = 0;
 
+let amount = 123;
+//amount = amount.toString();
+amount += "HELLO"
+showMessage(amount);
