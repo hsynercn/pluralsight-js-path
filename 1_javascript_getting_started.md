@@ -405,3 +405,13 @@ do {
 } while (count < 5);
 //1 2 3 4
 ```
+
+### 1.5. Functions
+
+Introduction
+- Function basics
+- Function expression
+- Passing information to functions
+- Function raturn values
+- Function scope
+- Using functions to modify web pages
