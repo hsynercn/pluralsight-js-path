@@ -204,10 +204,10 @@ price--;
 Operator Precedence
 
 MDN(Mozilla Developer Network) operator precedence  
-Precedence
-    21: grouping ( ... )
-    15: multiplication/division/remainder -> left-to-right
-    14: addition/substraction -> left-to-right
+Precedence  
+    21: grouping ( ... )  
+    15: multiplication/division/remainder -> left-to-right  
+    14: addition/substraction -> left-to-right  
 
 ```js
 let price = 3 + 2 * 2;// result 7
