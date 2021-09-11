@@ -162,7 +162,8 @@ var second = 2;
 
 ### 1.5. Types and Operators
 
-Introduction:
+Introduction  
+Types:  
 - Numbers
 - Strings
 - Converting between types
@@ -250,7 +251,7 @@ amount = amount.toString();
 
 let sum = Number.parseFloat("123.12");
 ```
-This string is can't be converted to a number, result is Not A Number.
+This string can't be converted to a number, result is Not A Number.
 ```js
 //NaN
 let total = Number.parseFloat("AAA123.12");
@@ -258,4 +259,20 @@ let total = Number.parseFloat("AAA123.12");
 We can convert this string to a number, function stops parsing as soon as it hits a not a number.
 ```js
 let total = Number.parseFloat("123.12AAAA");
+```
+
+Boolean Variables
+
+```js
+let saved = false;// typeof saved is boolean
+saved = !saved;
+```
+
+null and undefined  
+null and undefined are two more types of JavaScript, null has one value null and undefined has one value undefined.
+
+```js
+let saved;//undefined, when they are not initilaized
+saved = 10;
+saved = null;//null, programmer can set a variable to null to wipe out that value' this is a best practice
 ```
