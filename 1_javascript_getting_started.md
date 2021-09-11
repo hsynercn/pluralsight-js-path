@@ -360,3 +360,48 @@ if(1 == "1") {
     console.log("not equal");
 }
 ```
+
+The Ternary Operator
+```js
+// condition ? true statement : false statement; 
+let message = (price > 10) ? 'expensive' : 'cheap';
+```
+
+Block Scope Using Let
+```js
+if(true) {
+    const value = 'yes';
+    console.log(value);
+}
+//console.log(value); we cant access value outside of the block
+```
+
+Looping with for()  
+Loops through until condition is false.
+```js
+for (let i = 0; i < 3; i++) {
+    console.log(i);
+}
+//0 1 2
+```
+
+Looping with while()
+```js
+let count = 1;
+while (count < 5) {
+    console.log(count);
+    count++;
+}
+//1 2 3 4
+```
+
+Looping with do ... while()  
+Executes at least one time.
+```js
+let count = 1;
+do {
+    console.log(count);
+    count++;
+} while (count < 5);
+//1 2 3 4
+```
