@@ -490,11 +490,57 @@ We need to pay attention to outer and local scope.
 let key = 42;//outer most scope
 function getCode(value) {
     let keyGenerator = function() {
-        let key = 12;//local scope overrides outer value
+        let key = 12;//local scope or closest to local scope overrides outer value
         return key;
     }
     let code = value * keyGenerator();
     return code;
 }
 let code = getCode(2);
+```
+### 1.5. Objects and the DOM
+
+DOM:Document Object Model  
+
+Introduction
+- Object Properties and Methods
+- Passing Objects to Functions
+- Standart Built-in Objects
+- The Document Object Model (DOM)
+- Detecting Button Clicks
+- Showing and Hiding DOM Elements
+
+Object Properties  
+Group of values or properties.
+```js
+let person = {
+    name: "Heidi",
+    age: 45,
+    isAlive: true
+};
+console.log(person.name);   //Heidi
+console.log(person.age);    //45
+console.log(person.isAlive);//true
+console.log(person.someThing);//undefined
+```
+
+Square brackets, dot notation.
+```js
+let person = {
+    name: "Heidi",
+    age: 45,
+    isAlive: true
+};
+person.age = 46;
+person['age'] = 47;
+```
+
+We nca use symbols to hide information.
+```js
+let mySymbol = Symbol();
+let person = {
+    name: "Tom",
+    age: 33,
+    [mySymbol]: 'secretInformation'
+}
 ```

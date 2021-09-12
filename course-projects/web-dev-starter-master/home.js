@@ -14,5 +14,6 @@ constPrice = 0;
 
 let amount = 123;
 //amount = amount.toString();
-amount += "HELLO"
-showMessage(amount);
+
+showMessage("HELLO");
+changePercentOff(30);
