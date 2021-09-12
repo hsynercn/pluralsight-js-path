@@ -544,3 +544,69 @@ let person = {
     [mySymbol]: 'secretInformation'
 }
 ```
+
+Object Methods  
+Traditionally printInfo called as method because it attached to a object.
+```js
+let person = {
+    name: 'Tom',
+    age: 32,
+    printInfo: function() {
+        console.log(this.name + " is " + this.age);
+    }
+}
+person.printInfo();
+```
+
+Passing Objects to Functions
+
+```js
+let message = 'Hello';
+
+//passed by value, change has no effect on original value, any string, boolean, number
+function changeMessage(message) {
+    message = 'Hi!';
+}
+changeMessage(message);
+console.log(message);
+```
+
+```js
+let person = {
+    name: "Tom",
+    age: 32
+}
+//passed by reference, gives pointer to object
+function incrementAge(person) {
+    person.age++;//33
+}
+incrementAge(person);
+console.log(person.age)
+```
+
+Standart Build-in Objects  
+- Array
+- Date
+- Math
+- String
+
+The Document Object Model(DOM)  
+We can access elements with their ids.
+```js
+document.getElementById('message');
+```
+
+Styling DOM Elements
+```js
+document.getElementById('message').style.color = 'red';
+```
+
+Detecting Button Clicks  
+```js
+const button = document.getElementById('see-review');
+//we can add a handler for specific events
+button.addEventListener('click', function() {
+    console.log("click");
+});
+```
+
