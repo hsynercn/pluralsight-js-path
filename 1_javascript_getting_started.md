@@ -429,12 +429,10 @@ Function Expressions
 ```js
 //function decleration
 function showMessage() {
-    
 }
 
 //function expression 
 let fn = function () {
-
 }
 fn()
 
@@ -443,4 +441,60 @@ let myFunc = function testFunction() {
 
 }
 //testFunction(); gives reference error
+```
+
+Passing Information to Functions  
+We use comma seperated parameters to transfer info to function.
+```js
+function showMessage(message, secondMessage) {
+    console.log(message, secondMessage);
+}
+showMessage("Hello", " World");
+showMessage("Test", " this");
+```
+
+If we don't supply values for all parameters they will be set to undefined.
+
+```js
+function myFunction(message, secondMessage) {
+    console.log(message);
+    console.log(secondMessage);//prints undefined
+}
+myFunction();
+```
+
+Function Return Values  
+We use return to get information out.
+```js
+function getCode(value) {
+    let code = value * 42;
+    return code;
+}
+console.log(getCode(2));// 84
+```
+
+Function Scope  
+We encapsulate code in function scope, parameters can't leak out. 
+```js
+function getCode(value) {
+    let code = value * 42 
+    return code;
+}
+let resultCode = getCode(2);
+console.log(code);//reference error, we cen't access code variable out of function scope
+```
+
+Nested functions  
+We need to pay attention to outer and local scope.
+```js
+let key = 42;//outer most scope
+function getCode(value) {
+    let keyGenerator = function() {
+        let key = 12;//local scope overrides outer value
+        return key;
+    }
+    let code = value * keyGenerator();
+    return code;
+}
+let code = getCode(2);
 ```
