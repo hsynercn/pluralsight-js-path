@@ -415,3 +415,32 @@ Introduction
 - Function raturn values
 - Function scope
 - Using functions to modify web pages
+
+Function Basics  
+```js
+function showMessage() {
+    console.log("in a function");
+}
+showMessage();
+showMessage();
+//shown twice
+```
+Function Expressions
+```js
+//function decleration
+function showMessage() {
+    
+}
+
+//function expression 
+let fn = function () {
+
+}
+fn()
+
+//in function expression function name is optional but we can't use name to call that function
+let myFunc = function testFunction() {
+
+}
+//testFunction(); gives reference error
+```
