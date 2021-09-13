@@ -747,3 +747,49 @@ function showId() {
     console.log(app.productId);
 }
 ```
+
+Function Scope
+```js
+function showProductId() {
+    let id = 123;
+    function fix() {
+        let id = 321;
+        console.log(id);//321
+    }
+    fix();
+    console.log(id);//123
+}
+showProductId();
+```
+
+var and Hoisting  
+Because of hoisting id variable set to undefined when JS executed.
+```js
+id = 123;
+console.log(id);//123
+var id = 0;
+```
+
+Because of hoisting we can call show function before it's decleration. JS engine parses functions in first pass.
+```js
+show();
+function show() {
+    console.log("123");
+}
+```
+
+Undeclared Variables and Scrict Mode  
+In early JS version we can use variables without decleration.
+```js
+//bad example
+productId = 1;
+console.log(window.productId);
+```
+
+After several releases strict mode is added.
+```js
+'use strict'
+let id = 1;
+console.log(id);
+```
+
