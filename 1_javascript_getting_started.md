@@ -610,3 +610,50 @@ button.addEventListener('click', function() {
 });
 ```
 
+### 1.5. Arrays
+
+Introduction
+- Accessing array items
+- Manipulating arrays
+- slice() and splice()
+- Array searching and looping
+- Arrays in the DOM
+
+Creating and Initializing Arrays  
+```js
+//values as three elements
+let values = [ 1, 2, 3 ];
+let values2 = Array.of(1, 2, 3);
+//for best practice don't mix types
+let values3 = ['a', 'b', 'c'];
+console.log(values3);//["a", "b", "c"]
+```
+
+Array is not a bultin type
+```js
+let values = [1, 2, 3];
+console.log(typeof values);//object
+
+//we can check array state
+console.log(Array.isArray(values));
+```
+
+Accessing Array Items  
+```js
+let values = ['a', 'b', 'c'];
+console.log(values[0]);// a
+console.log(values[1]);// b
+console.log(values[2]);// c
+console.log(values[3]);// undefined
+
+values[0] = "aaa";
+```
+
+Manipulating Arrays  
+```js
+const values = [ 'a', 'b', 'c' ];
+values.push('d', 'e');// a, b, c, d, e
+const lastValue = values.pop();// e
+const firstValue = values.shift();// a
+values.unshift('hello', 'world');// hello, world, b, c, d, e
+```
