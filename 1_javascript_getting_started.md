@@ -290,7 +290,7 @@ console.log(person.firstName);
 ```
 Symbols are used for information hiding in objects.
 
-### 1.5. Program Flow
+### 1.6. Program Flow
 
 Introduction
 - if ... else Statements
@@ -406,7 +406,7 @@ do {
 //1 2 3 4
 ```
 
-### 1.5. Functions
+### 1.7. Functions
 
 Introduction
 - Function basics
@@ -498,7 +498,7 @@ function getCode(value) {
 }
 let code = getCode(2);
 ```
-### 1.5. Objects and the DOM
+### 1.8. Objects and the DOM
 
 DOM:Document Object Model  
 
@@ -610,7 +610,7 @@ button.addEventListener('click', function() {
 });
 ```
 
-### 1.5. Arrays
+### 1.9. Arrays
 
 Introduction
 - Accessing array items
@@ -708,4 +708,42 @@ const values = [ 'a', 'b', 'c' ];
 values.forEach(function(item) {
     console.log(item);
 });//a b c
+```
+
+Arrays in the DOM  
+```js
+const containers = document.getElementsByClassName('container');
+containers[2].classList.add('d-none');
+```
+
+### 1.10. Scope and Hoisting
+
+Introduction
+- Global scope
+- Function scope
+- var and Hoisting
+- Undeclared variables
+- Strict mode
+
+Global Scope  
+When we use a loaded js directly we use global scope.
+```js
+let productId = 123;
+function showId() {
+    //gets it from global scope
+    console.log(productId);
+}
+showId();//prints 123
+```
+
+For better practice we can use single object for global scope.
+```js
+const app = {
+    productId: 1234,
+    userName: 'Tom',
+    orderNumber: 789
+}
+function showId() {
+    console.log(app.productId);
+}
 ```
