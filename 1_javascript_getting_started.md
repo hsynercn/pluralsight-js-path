@@ -657,3 +657,55 @@ const lastValue = values.pop();// e
 const firstValue = values.shift();// a
 values.unshift('hello', 'world');// hello, world, b, c, d, e
 ```
+
+slice() and splice()  
+slice creates a new array, splite inserts/deletes old array.
+```js
+//slice
+const values = ['a', 'b', 'c'];
+const newValues = values.slice(1,2);
+console.log(newValues);//b
+```
+
+```js
+//splice
+const values = ['a', 'b', 'c'];
+values.splice(1, 1);//delete start index, number of items we want to delete
+console.log(values);// a, c
+
+values.splice(1, 0 ,'foo');// start index 1, we delete 0 element, a foo c
+```
+
+Array Searching and Looping  
+```js
+//indexOf()
+const values = [ 'a', 'b', 'c' ];
+console.log(values.index.of('c'));// 2
+console.log(values.index.of('b'));// 1
+console.log(values.index.of('d'));// -1
+```
+```js
+//filter()
+const values = [ 'a', 'b', 'c' ];
+const set = values.filter(function(item) {
+    return item > 'b';
+});
+console.log(set);// c
+```
+Find returns the value of first element that satisfies provided testing function.
+```js
+//find
+const values = ['a', 'bbb', 'c'];
+const found = values.find(function(item){
+    return item.length > 1;
+});
+console.log(found);//bbb
+```
+
+```js
+//forEach
+const values = [ 'a', 'b', 'c' ];
+values.forEach(function(item) {
+    console.log(item);
+});//a b c
+```
