@@ -47,7 +47,7 @@ Use instead of multiple if else statements. We use 'case' for cases, 'break' to 
 ```js
 function simpleSwitch() {
     let id = 2;
-    switch(id) {
+    switch (id) {
         case 1:
             console.log("Product 1");
             break;
@@ -66,7 +66,7 @@ Multiple case statements
 ```js
 function simpleSwitch() {
     let id = 2;
-    switch(id) {
+    switch (id) {
         case 1:
         case 3:
         case 4:
@@ -83,11 +83,11 @@ function simpleSwitch() {
 }
 ```
 
-If we forget to put break.
+If we forget to put break execution continues.
 ```js
 function simpleSwitch() {
     let id = 1;
-    switch(id) {
+    switch (id) {
         case 1:
             console.log("This is 1");
         case 2:
@@ -95,5 +95,162 @@ function simpleSwitch() {
         break;
 
     }
+}
+```
+
+Switch uses strict comprasion, type and value must match.
+```js
+let id = "2";
+//we get unknown product, type does not match
+switch (id) {
+    case 1:
+        console.log("prouct 1");
+        break;
+    case 2:
+        console.log("product 2");
+        break;
+    default:
+        console.log("Unknown product");
+        break;
+}
+```
+
+Block Level Issues with Switch Statements
+```js
+//we get identifier already been declared error from this implementation
+let id = 2;
+switch (id) {
+    case 1:
+        let message = "one";
+        console.log(message);
+        break;
+    case 2:
+        let message = "two";
+        console.log(message);
+        break;
+}
+```
+
+To fix scope problem we can use local scope.
+```js
+//we get identifier already been declared error from this implementation
+let id = 2;
+switch (id) {
+    case 1: {
+        let message = "one";
+        console.log(message);
+        break;
+    }
+    case 2: {
+        let message = "two";
+        console.log(message);
+        break;
+    }
+}
+```
+
+### 1.2. The Difference Between for/in and for/of
+
+Module content;
+- For/in statement
+- For/of statement
+- Break
+- Continue
+- Labeled statements
+
+For/in Statement  
+Iterates over elements of object.  
+Returns key (property/method) name.
+object[key] returns value.
+```js
+let product = {
+    "id": 1,
+    "name": "Tom",
+    "color": "black"
+};
+//in keyword grabs all property and method names from an object
+for(const key in product) {
+    console.log("key:'" + key + "'=" + product[key]);
+}
+```
+For/of Statement  
+Iterates over values in array, string, etc.
+Returns object for each iteration.
+```js
+let objects = [
+    {"name": "a"},
+    {"name": "b"},
+    {"name": "c"},
+    {"name": "d"}
+];
+for(const item of objects) {
+    console.log(JSON.stringfy(item));
+}
+
+let iterateStrng = "Hello World";
+for(const char of iterateStrng) {
+    console.log(char)// prints H,e,l,l,o, ,W,o,r,l,d
+}
+```
+
+Difference for...in and for...of   
+Both for...in and for...of are looping constructs which are used to iterate over data structures. The only difference between them is the entities they iterate over:
+- for...in iterates over all enumerable property keys of an object
+- for...of iterates over the values of an iterable object like arrays, strings, and node lists.
+
+If we use for...of with a non-iterable object we get 'object is not iterable' error
+
+```js
+let arr = ["val1", "val2", "val3"];
+arr.addedProp = "addedProp";
+for(const elKey in arr) {
+    console.log(elKey);
+}
+// prints 1, 2, 3, addedProp
+
+for(const elValue of arr) {
+    console.log(elValue);
+}
+//prints val1, val2, val3
+```
+
+Break and Continue  
+Break: Leave a loop early
+Continue: Next iteration
+
+```js
+let array = [
+    {"id": 1},
+    {"id": 2},
+    {"id": 3},
+    {"id": 4}
+];
+for(const item of array) {
+    if(item.id > 2 ) {
+        break;
+    }
+    console.log(item.id);// prints only 1, 2 it breaks out of the loop 
+}
+
+for(const item of array) {
+    if(item.id === 3 ) {
+        continue;
+    }
+    console.log(item.id);// prints 1, 2, 4 it continues the loop with next element
+}
+```
+
+Labelled Statement  
+Define a location to "goto"
+Don't use this shit
+
+```js
+//even:  <- this is a label
+even:
+for(let index = 1; index <= 10; index++) {
+    if(index % 2 == 1) {
+        continue even;
+    }
+    console.log(inde);// prints even number
 }
 ```
