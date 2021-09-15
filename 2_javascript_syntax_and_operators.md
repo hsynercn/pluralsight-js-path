@@ -326,3 +326,17 @@ price /= 10;//10
 price **= 2;//100
 price %= 10;//0
 ```
+
+Comparison Operators
+
+| Operator | Example |
+| :---: | :---: |
+| Less than(<) | price < 10 |
+| Less than or equal to(<=) | price <= 3 |
+| Greater than(>) | price > 1 |
+| Greater than or equal to (>=) | price >= 1 |
+| Equal in value(==) | price == "10" |
+| Equal in value and type(===) | price === "10" |
+| Not equal in value(!=) | price != "10" |
+| Not equal in value and type(!==) | price !== "10" |
+
