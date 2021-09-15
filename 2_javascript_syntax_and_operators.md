@@ -271,8 +271,58 @@ Mathematical Operators
 | :---: | :---: |
 | Addition(+) | 2 + 3 |
 | Subtraction(-) | 4 - 2 |
-| Multiplication(+* | 2 * 2 |
+| Multiplication(+) | 2 * 2 |
 | Division(/) | 8 / 4 |
-| Exponentiation | 2 ** 2 |
+| Exponentiation(**) | 2 ** 2 |
 | Modulus(%) | 9 % 4 |
 | Increment(++) | index++ |
+| Decrement(--) | index++ |
+
+```js
+let price = 12;
+console.log(price + 10);//22
+console.log(price - 10);//2
+console.log(price * 10);//120
+console.log(price / 10);//1.2
+console.log(price ** 2);//144
+console.log(price % 10);//2
+
+price = 10;
+console.log(++price);//11
+console.log(price++);//11
+console.log(--price);//11
+console.log(price--);//11
+```
+
+Plus sign with strings and numbers  
+Strings: Concatenation
+Numbers: Addition 
+
+```js
+//if one is a string -> concatenation
+let result = 100 + "200";// "100200"
+//we can convert it to a numeric
+let result2 = 100 + (+"200");// 300
+```
+
+Assignment Operators
+
+| Operator | Example |
+| :---: | :---: |
+| Equal(=) | price = 10 |
+| Addition(+=) | price += 3 |
+| Subtraction(-=) | price -= 2 |
+| Multiplication(*=) | price *= 2 |
+| Division(/=) | price /= 4 |
+| Exponentiation(**=) | price **= 2 |
+| Modulus(%=) | price %= 4 |
+
+```js
+let price = 10;
+price += 20;//30
+price -= 20;//10
+price *= 10;//100
+price /= 10;//10
+price **= 2;//100
+price %= 10;//0
+```
