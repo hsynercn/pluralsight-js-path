@@ -254,3 +254,25 @@ for(let index = 1; index <= 10; index++) {
     console.log(inde);// prints even number
 }
 ```
+
+### 1.2. Using Math and Comparison Operators
+
+Module content:
+- JavaScript operators
+    - Math
+    - Assignment
+    - Comparison
+- Plus sign with strings and numbers
+- 'use strict' functionality
+
+Mathematical Operators
+
+| Operator | Example |
+| :---: | :---: |
+| Addition(+) | 2 + 3 |
+| Subtraction(-) | 4 - 2 |
+| Multiplication(+* | 2 * 2 |
+| Division(/) | 8 / 4 |
+| Exponentiation | 2 ** 2 |
+| Modulus(%) | 9 % 4 |
+| Increment(++) | index++ |
