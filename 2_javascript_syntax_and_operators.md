@@ -149,7 +149,7 @@ switch (id) {
 }
 ```
 
-### 1.2. The Difference Between for/in and for/of
+### 1.3. The Difference Between for/in and for/of
 
 Module content;
 - For/in statement
@@ -255,7 +255,7 @@ for(let index = 1; index <= 10; index++) {
 }
 ```
 
-### 1.2. Using Math and Comparison Operators
+### 1.4. Using Math and Comparison Operators
 
 Module content:
 - JavaScript operators
@@ -340,3 +340,37 @@ Comparison Operators
 | Not equal in value(!=) | price != "10" |
 | Not equal in value and type(!==) | price !== "10" |
 
+```js
+10 == 10;//true
+10 === 10;//true
+10 == "10";//true
+10 === "10";//false
+```
+
+Ternary operator
+```js
+let mssg = 10 > 9 ? "greater" : "smaller";
+```
+
+'use strict'  
+Ignored by older browsers.  
+Forces all variable to be declared.  
+Mistyped variable names are created globally scoped.  
+
+```js
+'use strict';
+//value = 10;//we can't use this
+let value = 10;
+//with strict mode
+
+//can't use reserved words as variables
+let eval = 10;
+
+//can't delete a variable
+delete value;
+
+//can't delete a function
+delete useStrictSample;
+```
+
+### 1.5. Working with Logical Operators and Short-circuit Evaluation
