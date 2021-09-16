@@ -374,3 +374,129 @@ delete useStrictSample;
 ```
 
 ### 1.5. Working with Logical Operators and Short-circuit Evaluation
+
+Module Content
+
+- True and false values
+    - Known as 'truthy' and 'falsy'
+- Logical operators
+    - And, or, not
+- Short circuiting
+
+| True | False |
+| :---: | :---: |
+| "Hey", 10, Boolean true | null, undefined, NaN, Boolean false |
+
+```js
+let price = 200;
+let color = "red";
+
+//price is greater than zero
+if(price) {
+    console.log("price is > 0");
+}
+
+//color has characters
+if(color) {
+    console.log("color has a value");
+}
+
+//these cases results false in if
+color = null;
+color = "";
+color = undefined;
+let value2;
+value2 = 100 / "test";
+
+```
+
+Logical Operators
+
+| Operator | Exmple |
+| :---: | :---: |
+| And(&&) | price > 10 && price < 100 |
+| Or(||) | price <= 10 || price >= 100 |
+| Not(!) | !(price > 10) |
+
+```js
+let price = 50;
+price > 10 && price < 100;//true
+price > 10 || price > 100;//true
+!(price > 100);//true
+```
+
+Short Circuiting
+
+Optimzation for logical expressions  
+Bypassed subsequent expressions in && or || based truthy or falsy
+
+```js
+//does not call second function
+let result = getFalse() && getTrue(); 
+
+//does not call second function
+let result2 = getTrue() || getFalse(); 
+
+function getTrue() {
+    return true;
+}
+function getFalse() {
+    return false;
+}
+```
+
+### 1.5. Utilizing JavaScript Exception Handling
+
+Module content:
+- Handling exceptions
+- Throw a custom exception
+- Check for type of error
+
+```js
+try {
+    //some code that could fail
+} catch (error) {
+    //do something with error
+} finally {
+    //thes code always runs
+}
+```
+
+```js
+let result;
+try {
+    result = x / 10;
+    console.log(result);
+} catch (error) {
+    console.log(error.message);//x is not defined
+} finally {
+    console.log("finally block");
+}
+```
+
+Throw
+
+Can throw your own custom error
+Create an object with at least two properties "message" and "name"
+
+```js
+try{
+    throwsSomeError();
+} catch (error) {
+    console.log(error.message + " - " + error.name);
+}
+
+function throwsSomeError() {
+    let result;
+    try{
+        result = x / 10;
+    } catch (error) {
+        throw{
+            "message": "This is my exception",
+            "name": "Custom exception"
+        }
+    }
+}
+```
+
+Detect the Error Type
