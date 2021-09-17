@@ -445,7 +445,7 @@ function getFalse() {
 }
 ```
 
-### 1.5. Utilizing JavaScript Exception Handling
+### 1.6. Utilizing JavaScript Exception Handling
 
 Module content:
 - Handling exceptions
@@ -500,3 +500,81 @@ function throwsSomeError() {
 ```
 
 Detect the Error Type
+
+Builtin error types:
+- ReferenceError
+- RangeError
+- TypeError
+- URIError
+- SyntaxError
+- EvalError < older code
+
+```js
+function handleError(error) {
+    switch (error.name) {
+        case "ReferenceError":
+            console.log("ReferenceError");
+            break;
+        case "RangeError":
+            console.log("RangeError");
+            break;
+        case "TypeError":
+            console.log("TypeError");
+            break;
+        case "URIError":
+            console.log("URIError");
+            break;
+        case "SyntaxError":
+            console.log("SyntaxError");
+            break;
+        case "EvalError":
+            console.log("EvalError");
+            break;
+        default:
+            console.log("Default");
+            break;
+    }
+}
+```
+
+Summary
+- Always add try...catch around risky code
+- Use fnally block if required
+- Throw custom error to communicate specific info
+- Change how you handle errors based on the type of error
+
+
+### 1.7. How to Determine JavaScript Variable Data Types
+
+
+Module content:
+- Different data types
+    - Primitives 
+    - Objects
+- How to determine data types
+    - typeof operator
+    - constructor property
+    - instanceof operator
+
+Primitive Data Types
+
+| Data type | Description |
+| :---: | :---: |
+| boolean | true or false |
+| undefined | no value |
+| number | integers, decimals, float. etc. |
+| string | a series (array) of characters |
+
+Object Data Types
+| Data type | Description |
+| :---: | :---: |
+| new Array | A collection of values |
+| new Error | Contains a name and an error message |
+| new Function | A block of code |
+| new Object | A wrapper around and type |
+| new RegExp | A regular expresion |
+| new Boolean | An objects that contains true or false |
+| new Number | An object that contains a numeric value |
+| new String | An object that contains a char or chars |
+
+Better use primitive boolean, number, and string. Object versions are costly.
