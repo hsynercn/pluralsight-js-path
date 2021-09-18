@@ -647,3 +647,17 @@ console.log(strValue.constructor.toString());   //function String() { [native co
 console.log(isActive.constructor.toString());   //function Boolean() { [native code] }
 console.log(test.constructor.toString());       //function Function() { [native code] }
 ```
+
+Helper Functions for the Constructor Property
+
+```js
+function isArray(value) {
+    return value.constructor.toString().indexOf("Array") > -1;
+}
+function isDate(value) {
+    return value.constructor.toString().indexOf("Date") > -1;
+}
+function isNullOrUndefined(value) {
+    return value === null || value === undefined;
+}
+```
