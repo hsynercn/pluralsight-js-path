@@ -791,3 +791,49 @@ Use strict changes the function scope behaviour. Without 'use strict' function s
 </script>
 
  ```
+
+'this'in Object Literal
+```js
+let product = {
+    "id": 101,
+    "standartCost": 1059.31,
+    "listPrice": 1431.42,
+    grossProfit: function() {
+        return (this.listPrice - this.standartCost)
+            .toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+    }
+}
+console.log(product.grossProfit());// $372.11
+```
+
+'this' with call() and apply() Methods
+
+call():It can be used to invoke (call) a method with an owner object as an argument (parameter). With call(), an object can use a method belonging to another object.
+
+Call and apply are very similar, both invoke the function tehy are called on, and take 'this' argument as their first argument.
+
+Their parameter are different  
+
+someFunc.call(thisArg, 1, 2, 3) VS someFunc.apply(thisArg, [1, 2, 3])
+
+```js
+
+let product = {
+    "id": 101,
+    "standartCost": 1059.31,
+    "listPrice": 1431.42,
+    grossProfit: function() {
+        return (this.listPrice - this.standartCost)
+            .toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+    }
+}
+let product2 = {
+    "standartCost": 250,
+    "listPrice": 450,
+}
+console.log(product.grossProfit.call(product));//$372.11
+console.log(product.grossProfit.call(product2));//$200.00
+console.log(product.grossProfit.apply(product));//$372.11
+console.log(product.grossProfit.apply(product2));//$200.00
+
+```
