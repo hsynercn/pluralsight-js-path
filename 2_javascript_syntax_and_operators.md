@@ -855,3 +855,112 @@ let product2 = new Product("2", 50, 100);
 console.log(product1.grossProfit());//$100.00
 console.log(product2.grossProfit());//$50.00
 ```
+
+Summary:
+- Scope determines value of 'this'
+    - Global object
+    - HTML element
+    - Method owner
+- 'use strict' makes 'this' undefined in functions
+- What is pased to call() and apply() methods becomes 'this'
+- constructor functions owner is 'this'
+
+### 1.9. Using the Powerful Spred Operator
+
+Module content:
+- Power of spread
+- Copy/concatenate arrays
+- Pass constructors
+- Shallow copy objects
+- Call function with multiple parameters
+
+Spread Operator  
+Expand any 'iterable' such as a string or array into an array.  
+For passing multiple arguments to mthod.  
+The syntaxx uses the ellipsis symbol( ... ).  
+Always on the right-side of an equal sign.  
+
+NOTE: IE and Edge do not support spread
+
+Copy a String to an Array Using Spread
+
+Convert string to array by spread operator
+```js
+function stringToArray() {
+    return [..."test"]
+}
+console.log(stringToArray());//(4) ['t', 'e', 's', 't']
+```
+
+Copy an Array of Primitives Using Spread
+
+```js
+let arr = [1, 2, 3];
+//copies array
+let arr2 = [...arr];
+//same as slice
+let arr3 = arr.slice(0);
+```
+
+Copy an Array of Objects
+
+```js
+let _products = [
+    {id:1, name:"Tom"},
+    {id:2, name:"Cat"}
+];
+//copied by ref
+let products = [..._products];
+products[0].name = "Jane";
+console.log(_products[0].name);//Jane
+console.log(products[0].name);//Jane
+```
+
+Concatenate Two Arrays Together
+
+```js
+let products1 = [
+    {id:1, name:"Tom"},
+    {id:2, name:"Cat"}
+];
+let products2 = [
+    {id:1, name:"Tom"},
+    {id:2, name:"Cat"}
+];
+//same operation
+let allProds1 = products1.concat(products2);
+let allProds2 = [...products1, ...products2];
+```
+
+Using Spread to Pass Parameters to a Constructor
+
+```js
+let date1 = new Date(2022, 1, 1);
+let params = [2022, 1, 1];
+let date2 = new Date(...params);
+```
+
+Passing Parameters to a Function
+
+```js
+function multipleParams(arg1, arg2, arg3) {
+    console.log(arg1 + "," arg2 + "," arg3)
+}
+multipleParams(1, 2 ,3);
+let arr = [1, 2, 3];
+multipleParams(...arr);
+```
+
+Shallow Copy on Object Literals
+
+```js
+let prod1 = {id:1, name:"Tom", location:{city:"Ist"}};
+//shallow copy
+let prod2 = {...prod1};
+prod2.id = 2;
+console.log(prod1.id);//1
+console.log(prod2.id);//2
+prod2.location.city = "17";
+console.log(prod1.location.city);//17
+console.log(prod2.location.city);//17
+```
