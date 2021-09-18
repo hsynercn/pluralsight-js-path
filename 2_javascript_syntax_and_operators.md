@@ -751,3 +751,43 @@ console.log(person2.getName());//2Cat
 
 ```
 
+'this' in Global and Function Scope
+
+Different values based on executing context:
+- In a method: owner object
+- In a function: global object
+- In an event: element that received the event
+
+Call()/apply() methods referts to object passed in.  
+'use strict' also affects 'this'.
+
+Use strict changes the function scope behaviour. Without 'use strict' function scope acts as global scope.
+```html
+<script>
+    'use strict'
+    //global scope
+    console.log("this refers to:" + this.toString());//[object Window]
+    console.log("this === window:" + (this === window));//true
+    functionScope();
+    function functionScope() {
+        //Uncaught TypeError: Cannot read properties of undefined (reading 'toString')
+        console.log("this refers to:" + this.toString());
+        console.log("this === window:" + (this === window));
+    }
+</script>
+```
+
+'this'in Event Handlers
+ ```html
+
+<button onclick="eventHandler(this)">
+    Button
+</button>
+<script>
+    'use strict';
+    function eventHandler(ctl) {
+        console.log(ctl.toString());// [object HTMLButtonElement]
+    }
+</script>
+
+ ```
