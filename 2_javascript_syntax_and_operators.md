@@ -837,3 +837,21 @@ console.log(product.grossProfit.apply(product));//$372.11
 console.log(product.grossProfit.apply(product2));//$200.00
 
 ```
+
+'this'in Constructor Functions
+
+```js
+function Product(id, cost, price) {
+    this.id = id;
+    this.standartCost = cost;
+    this.listPrice = price;
+    this.grossProfit = function() {
+        return (this.listPrice - this.standartCost)
+            .toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+    }
+}
+let product1 = new Product("1", 100, 200);
+let product2 = new Product("2", 50, 100);
+console.log(product1.grossProfit());//$100.00
+console.log(product2.grossProfit());//$50.00
+```
