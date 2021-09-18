@@ -699,3 +699,54 @@ Detecet data types using typeof and instanceof.
 - instanceof for checking what type of object
 Can use constructor property.
 - Both on objects and primitives
+
+### 1.7. Understanding 'this' in JavaScript
+
+Module content:
+- What is 'this'
+- Learn how 'this' changes
+- Global adn function scope
+- Event handlers
+- Object literal
+- call()/apply() methods
+- Constructor functions
+
+Introduction to the 'this' Keyword
+
+Refers to an object  
+That object in which the current code is running  
+Sometimes the object can be changed
+
+```js
+//in HTML script block this=global window object
+console.log(this.toString());//prints [object Window]
+//
+```
+
+```js
+let person = {
+    //this=person object literal
+    id: "100",
+    name: "name",
+    getName:function() {
+        return this.id + "" + this.name;
+    }
+}
+```
+
+```js
+function Person(id, name) {
+    //current Person object
+    this.id = id;
+    this.name = name;
+    this.getName = function() {
+        return this.id + "" + this.name;
+    }
+}
+let person1 = new Person(1, "Tom");
+let person2 = new Person(2, "Cat");
+
+console.log(person1.getName());//1Tom
+console.log(person2.getName());//2Cat
+
+```
