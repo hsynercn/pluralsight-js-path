@@ -700,7 +700,7 @@ Detecet data types using typeof and instanceof.
 Can use constructor property.
 - Both on objects and primitives
 
-### 1.7. Understanding 'this' in JavaScript
+### 1.8. Understanding 'this' in JavaScript
 
 Module content:
 - What is 'this'
