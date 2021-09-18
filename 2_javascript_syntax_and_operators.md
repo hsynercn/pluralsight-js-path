@@ -578,3 +578,72 @@ Object Data Types
 | new String | An object that contains a char or chars |
 
 Better use primitive boolean, number, and string. Object versions are costly.
+
+typeof Operator
+
+Returns the data type of the passed in expression.  
+A string value is returned such as:'string', 'number', 'object', etc.
+
+```js
+console.log(typeof "Hello");//string
+console.log(typeof 4);//number
+console.log(typeof 2 * 2);//number
+```
+
+```js
+function test() {}
+let products = [
+    {id:1, name: "Tom", subObj: {}},
+    {id:2, name: "Jake", subObj: {}}
+]
+let product = products[0];
+let introDate = new Date();
+let strValue = new String();
+let isActive = false;
+let result;
+let value = null;
+
+console.log(typeof products);   //object
+console.log(typeof products[0]);//object
+console.log(typeof product);    //object
+console.log(typeof product.id); //number
+console.log(typeof product.name);//string
+console.log(typeof product.subObj);//object
+console.log(typeof introDate);  //object
+console.log(typeof strValue);   //object
+console.log(typeof isActive);   //boolean
+console.log(typeof result);     //undefined
+console.log(typeof value);      //object
+console.log(typeof test);       //function
+```
+
+Object Data Type / Constructor
+
+All object data types inherit from Object(not primitives).  
+Object has constructor property. 
+Returns a reference to the object itself.  
+
+```js
+function test() {}
+let products = [
+    {id:1, name: "Tom", subObj: {}},
+    {id:2, name: "Jake", subObj: {}}
+]
+let product = products[0];
+let introDate = new Date();
+let strValue = new String();
+let isActive = false;
+let result;//undefined does not have a constructor
+let value = null;// null does not have a constructor
+
+console.log(products.constructor.toString());   //function Array() { [native code] }
+console.log(products[0].constructor.toString());//function Object() { [native code] }
+console.log(product.constructor.toString());    //function Object() { [native code] }
+console.log(product.id.constructor.toString()); //function Number() { [native code] }
+console.log(product.name.constructor.toString());//function String() { [native code] }
+console.log(product.subObj.constructor.toString());//function Object() { [native code] }
+console.log(introDate.constructor.toString());  //function Date() { [native code] }
+console.log(strValue.constructor.toString());   //function String() { [native code] }
+console.log(isActive.constructor.toString());   //function Boolean() { [native code] }
+console.log(test.constructor.toString());       //function Function() { [native code] }
+```
