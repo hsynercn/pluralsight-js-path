@@ -661,3 +661,41 @@ function isNullOrUndefined(value) {
     return value === null || value === undefined;
 }
 ```
+instanceof Operator  
+Tests if inherits from Object(not a primitive)  
+Tests for a specific type of object  
+
+```js
+//object constructor function
+function Product(id, name, number) {
+    this.productId = id;
+    this.name = name;
+    this.productNumber = number;
+    this.color = "Black";
+    this.standartCost = 10;
+    this.listPrice = 20;
+}
+
+let prod = new Product(1, "Tom", "101");
+let date = new Date();
+let name = new String("Name");
+let value = "A simple string";
+
+//primitives are not objects
+console.log(prod instanceof Product);//true
+console.log(prod instanceof Object);//true
+console.log(date instanceof Date);//true
+console.log(date instanceof Object);//true
+console.log(name instanceof String);//true
+console.log(value instanceof String);//false
+console.log(value instanceof Object);//false
+
+```
+
+Important to understand the difference between primitives and Objects.  
+Use primitives where possible.  
+Detecet data types using typeof and instanceof.
+- typeof for checking type
+- instanceof for checking what type of object
+Can use constructor property.
+- Both on objects and primitives
