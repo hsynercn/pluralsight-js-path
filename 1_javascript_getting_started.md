@@ -2,6 +2,8 @@
 ## 1. JavaScript: Getting Started
 ### 1.1. Course Overview
 
+JavaScript is the programming lamguage of the web. JavaScript is a multi platform language.
+
 Applications:
  - Web Pages
  - Business Apps
@@ -45,7 +47,7 @@ Introduction:
 - Case sensitivity
 - Commenting code
 
-We can add script tag in HTML files to run JS
+We can add script tag in HTML files to run JS.
 ```html
 <script>
     //This is not a good practice
@@ -53,7 +55,7 @@ We can add script tag in HTML files to run JS
     alert("Carved Rock Fitness")
 </script>
 ```
-We can load a seperated JS file
+We can load a seperated JS file.
 
 ```html
 <script src="./filename.js"></script>
@@ -65,11 +67,11 @@ We can load a seperated JS file
 ```
 This is a wrong, older browsers can't handle it.
 
-For HMTL manipulation we need to add scripts tags at the end of index.html, for framework insertion etc. HMTL <head> is a better option.  
+For HMTL manipulation we need to add scripts tags at the end of HTML file, for framework insertion etc. HMTL <head> is a better option. 
 
 Whitespaces are ignored, spaces, tabs, new lines.
 To check error use f12 dev tools.
-JS is case sensitive, can't mixx up lower and upper cases.
+JS is case sensitive, can't mix up lower and upper cases.
 
 ```js
 //single line comment
@@ -85,7 +87,8 @@ Including JS in HTML
 - <script src="./filename.js"></script>  
 Formatting Code  
 - Freely use whitespace  
-Detecting Error  
+Detecting Error
+- f12
 Case Sensitivity  
 - JS is case sensitive  
 Commenting Code  
@@ -111,7 +114,7 @@ let discounted = true;
 ```
 We declare a variable with let keyword.
 
-We can use single quotes or double quotes for strings
+We can use single quotes or double quotes for strings.
 ```js
 let welcome = 'welcome';
 let hello = "hello"; 
@@ -130,7 +133,7 @@ Valid Variable Names
 Starts with one of: _ $ letter
 
 Followed by zero or more: _ $ letter number
-
+ 
 valid samples:  
 ```js
 let a = 1;
