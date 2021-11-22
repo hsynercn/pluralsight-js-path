@@ -2,7 +2,7 @@
 ## 1. JavaScript: Getting Started
 ### 1.1. Course Overview
 
-JavaScript is the programming lamguage of the web. JavaScript is a multi platform language.
+JavaScript is the programming language of the web. It is a multi-platform language.
 
 Applications:
  - Web Pages
@@ -11,31 +11,31 @@ Applications:
  - Games
 
 Unity engine supports JS. 
-TypeScript is popular with business apps.
-Apache Cordova for smart phones and tablets.
+TypeScript is popular with business apps, super set of JavaScript.
+Apache Cordova for smartphones and tablets.
 Electron for native Windows and macOS native apps.
 NodeJS for backend services.
 
 ### 1.2. Introduction to JavaScript
 
 Starting:  
-Install git  
-Install npm  
-Install vs code  
+1. Install git from https://git-scm.com/downloads.
+2. Install npm from https://nodejs.org/en/.  
+3. Install VS Code from https://code.visualstudio.com/download.  
 
-In vs code ctrl+' opens the terminal
+In VS Code ctrl+' opens the terminal
 
 Test commands:  
 git --version  
 npm --version  
 code  
 
-Init project commands:  
+Project initialization commands:  
 git clone https://github.com/pluralsight/web-dev-starter.git  
 cd web-dev-starter  
 code .  
-npm install(for better practice run from cmd not from vs code terminal)  
-npm run start  
+npm install(for better practice run from cmd not from VS Code terminal)  
+npm run start(starts up light server, opens browser)
 
 ### 1.3. JavaScript Beginnings
 
@@ -47,31 +47,31 @@ Introduction:
 - Case sensitivity
 - Commenting code
 
-We can add script tag in HTML files to run JS.
+We can add script tag in HTML files to run JS and change the markup. The usual starting page is index.html.
 ```html
 <script>
-    //This is not a good practice
+    //This is not a good practice, it is better to have JS code in its own file. 
     alert("Hello world");
-    alert("Carved Rock Fitness")
+    alert("Carved Rock Fitness");
 </script>
 ```
-We can load a seperated JS file.
+We can load a separated JS file.
 
 ```html
 <script src="./filename.js"></script>
 ```
-"." respresents the relative directory of index.html file. 
+"." represents the relative directory of index.html file. 
 
 ```html
 <script src="./filename.js"/>
 ```
 This is a wrong, older browsers can't handle it.
 
-For HMTL manipulation we need to add scripts tags at the end of HTML file, for framework insertion etc. HMTL <head> is a better option. 
+For HTML manipulation we need to add scripts tags at the end of HTML file, for framework insertion etc. HTML <head> is a better option. 
 
-Whitespaces are ignored, spaces, tabs, new lines.
-To check error use f12 dev tools.
-JS is case sensitive, can't mix up lower and upper cases.
+White spaces are ignored, spaces, tabs, new lines.
+To check errors use f12 dev tools.
+JS is case-sensitive, can't mix up lower and upper cases.
 
 ```js
 //single line comment
@@ -99,12 +99,13 @@ Commenting Code
 
 Introduction:
 - What is variables
+- Declaring variable
 - Naming variables
 - Common errors using variables
 - Changing variable values
 - Constants
 - The var keyword
-
+We use variables to hold information. Data is stored on the computer memory. Typical memory is a long number, instead we use variable to access this data.
 We declare variables with meaningful names.
 
 ```js
@@ -139,7 +140,7 @@ valid samples:
 let a = 1;
 let account = 1;
 let account_99 = 1;
-let accountNumber = 1;
+let accountNumber = 1;//camel notation
 let _accountNumber = 1;//generally private variable names start with '_'
 let $accountNumber = 1;//generally $ is used for automatically generated code  
 let _1234 = 1;
@@ -147,11 +148,17 @@ let __proto__ = 1;//for non standart features
 ```
 Camel case example 'accountNumber', because it has a bump in the middle.
 
-If a variable is not going to change using cosnt is best practice.
+If a variable is not going to change using cosnt is the best practice.
 We can't modify const variables, also can't declare them without an initial value.
 ```js
 cosnt price = 19.99;
 showMessage(price);
+```
+
+Prints undefined.
+```js
+let price;
+console.log(price);
 ```
 
 A variable declared with var is defined throughout the program as compared to let.
