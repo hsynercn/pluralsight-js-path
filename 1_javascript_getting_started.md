@@ -55,17 +55,16 @@ We can add script tag in HTML files to run JS and change the markup. The usual s
     alert("Carved Rock Fitness");
 </script>
 ```
-We can load a separated JS file.
+We can load a separated JS file."." represents the relative directory of index.html file. 
 
 ```html
 <script src="./filename.js"></script>
 ```
-"." represents the relative directory of index.html file. 
+This is wrong, older browsers can't handle it.
 
 ```html
 <script src="./filename.js"/>
 ```
-This is a wrong, older browsers can't handle it.
 
 For HTML manipulation we need to add scripts tags at the end of HTML file, for framework insertion etc. HTML <head> is a better option. 
 
@@ -82,22 +81,28 @@ Multi line comment
 ```
 
 Summary
+
 Including JS in HTML  
-- <script></script>  
-- <script src="./filename.js"></script>  
+```html
+<script></script>
+<script src="./filename.js"></script> 
+```
 Formatting Code  
 - Freely use whitespace  
+
 Detecting Error
 - f12
+
 Case Sensitivity  
-- JS is case sensitive  
+- JS is case-sensitive 
+
 Commenting Code  
 - //single line comment  
 - /* multiple line comment */  
 
 ### 1.4. Variables and Constants
 
-Introduction:
+Introduction
 - What is variables
 - Declaring variable
 - Naming variables
@@ -105,6 +110,8 @@ Introduction:
 - Changing variable values
 - Constants
 - The var keyword
+
+
 We use variables to hold information. Data is stored on the computer memory. Typical memory is a long number, instead we use variable to access this data.
 We declare variables with meaningful names.
 
@@ -113,9 +120,7 @@ let total = 132.333;
 let product = 'Hiking Boots';
 let discounted = true;
 ```
-We declare a variable with let keyword.
-
-We can use single quotes or double quotes for strings.
+We declare a variable with let keyword and can use single quotes or double quotes for strings.
 ```js
 let welcome = 'welcome';
 let hello = "hello"; 
@@ -131,44 +136,75 @@ let a = 1,
 
 Valid Variable Names
 
-Starts with one of: _ $ letter
+**Starts with one of:** _ $ letter
 
-Followed by zero or more: _ $ letter number
+**Followed by zero or more:** _ $ letter number
  
-valid samples:  
+valid name samples:  
 ```js
 let a = 1;
 let account = 1;
 let account_99 = 1;
-let accountNumber = 1;//camel notation
-let _accountNumber = 1;//generally private variable names start with '_'
-let $accountNumber = 1;//generally $ is used for automatically generated code  
+let accountNumber = 1; //camel notation
+let _accountNumber = 1; //generally private variable names start with '_'
+let $accountNumber = 1; //generally $ is used for automatically generated code  
 let _1234 = 1;
-let __proto__ = 1;//for non standart features 
+let __proto__ = 1; //for non standard features 
 ```
-Camel case example 'accountNumber', because it has a bump in the middle.
-
-If a variable is not going to change using cosnt is the best practice.
-We can't modify const variables, also can't declare them without an initial value.
+invalid name samples:
 ```js
-cosnt price = 19.99;
-showMessage(price);
+let 99times = 99; //Uncaught SyntaxError: Invalid or unexpected token
+let _times 99 = 99; //Uncaught SyntaxError: Unexpected number
+let let = 99; //Uncaught SyntaxError: let is disallowed as a lexically bound name
 ```
 
-Prints undefined.
+Camel case example 'accountNumber', camel because it has a bump in the middle.
+
+For best practice whenever you declare a variable also set its value.
 ```js
 let price;
-console.log(price);
+console.log(price); //prints undefined
+price = 10; //we can change variable values whenever we want
+console.log(price); //prints 10
 ```
 
-A variable declared with var is defined throughout the program as compared to let.
-First log gives an Uncaught ReferenceError: Cannot access before initialization error, second doesn't give any error, instead it prints 'undefined'.
+For constant variables we can use const keyword.
+We can't modify const variables, also can't declare them without an initial value.
 ```js
-console.log(first);
-console.log(second);
+const price = 19.99;
+showMessage(price);
+price = 99.00; // Uncaught TypeError: Assignment to constant variable
+const myPrice; //Uncaught SyntaxError: Missing initializer is const declaration
+```
+The var Keyword
+
+A variable declared with var is defined throughout the program as compared to let.
+First log gives an Uncaught ReferenceError: Cannot access before initialization, second doesn't give any error, instead it prints 'undefined'.
+```js
+console.log(first); //Uncaught ReferenceError: Cannot access before initialization
+console.log(second); //prints undefined
 let first = 1;
 var second = 2;
 ```
+Summary
+
+Defined variables
+
+Declared variables using let
+
+Naming variables
+- Begin with: _ $ letter
+- Then 0 or more: _ $ letter number
+
+Common errors using variables
+
+Variables change over time
+
+Declaring constants
+- The **const** keyword
+
+The **var** keyword
+- Avoid it, use **let** or **const** instead
 
 ### 1.5. Types and Operators
 
