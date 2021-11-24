@@ -225,14 +225,14 @@ console.log(typeof price);//prints number
 console.log(typeof fee);//prints string
 ```
 
-Arithmetic operations.
+Arithmetic operations
 ```js
 let price = 10;
 price = price + 1;
 price = price - 1;
 price = price / 2;
 price = price * 1;
-let modulus = price % 10;
+let modulus = price % 10; //remainder, modulus
 
 price += 1;
 price -= 1;
@@ -240,7 +240,7 @@ price /= 2;
 price *= 1;
 price %= 10;
 ```
-Increment, decrement operator.
+Increment, decrement operator. Operator can go after the variable.
 ```js
 let price = 1;
 ++price;
@@ -251,23 +251,24 @@ price--;
 Operator Precedence
 
 MDN(Mozilla Developer Network) operator precedence  
-Precedence  
     21: grouping ( ... )  
     15: multiplication/division/remainder -> left-to-right  
-    14: addition/substraction -> left-to-right  
+    14: addition/subtraction -> left-to-right  
 
 ```js
-let price = 3 + 2 * 2;// result 7
-price = (3 + 2) * 2;// result 10
+let price = 3 + 2 * 2; // result 7
+price = (3 + 2) * 2; // result 10
 ```
 
 Number Precision
 
+Be careful with number precision.
 ```js
 let price = 1.1 + 1.3// 2.4000000000000004, not exactly 2.4;
 ```
 
-Strings  
+Strings
+
 We can use escape notation for special characters.
 ```js
 let msg = 'Hello World';
@@ -277,17 +278,20 @@ let msg3 = "Hello \"World\"";
 We can use backtick for string formatting. Message 4 and 5 are different strings, there are several whitespace differences between them. But if we use them in HTML tags like head whitespace converted into single space.
 ```js
 let name = "Name";
-let msg4 = `Hello ${name}`;
-let msg5 = `Hello           ${name}`;
+let msg4 = `Hello ${name}`; //interpolation 
+let msg5 = `Hello           ${name}`; //be careful, HTML will ignore white spaces
 ```
 
 Manipulating Strings
 
 ```js
 let message = 'Hello';
+console.log(typeof message); //string
+console.log(message.length); //5
 message = message.toUpperCase();
 message = message.toLowerCase();
-message = message + ' World';
+message = message.substring(1); // gets: "ello"
+message = message + ' World'; //concatenation
 ```
 
 Converting String and Numbers
@@ -304,26 +308,29 @@ let total = Number.parseFloat("AAA123.12");
 ```
 We can convert this string to a number, function stops parsing as soon as it hits a not a number.
 ```js
-let total = Number.parseFloat("123.12AAAA");
+let total = Number.parseFloat("123.12AAAA"); //can parse this as 123.12
 ```
 
 Boolean Variables
 
 ```js
-let saved = false;// typeof saved is boolean
+let saved = false; //typeof saved is boolean
 saved = !saved;
+console.log(saved); //true
 ```
 
-Null and Undefined  
-null and undefined are two more types of JavaScript, null has one value null and undefined has one value undefined.
+Null and Undefined 
+
+null and undefined are two more types of JavaScript, **null** has one value **null** and **undefined** has one value **undefined**.
 
 ```js
-let saved;//undefined, when they are not initilaized
+let saved;//undefined, when they are not initialized
 saved = 10;
 saved = null;//null, programmer can set a variable to null to wipe out that value, this is a best practice
 ```
 
 Objects and Symbols
+
 Last two types.
 
 ```js
@@ -335,6 +342,29 @@ console.log(typeof person);//prints object
 console.log(person.firstName);
 ```
 Symbols are used for information hiding in objects.
+
+**Summary**
+
+Numbers
+
+Strings
+- 3 styles of quotes: "", '', ``
+
+Converting between types
+- variable.toString();
+- Number.parseFloat("123");
+- NaN (Not a Number)
+
+Booleans
+- true or false
+- !symbol(not)
+
+null and undefined
+- undefined is assigned by JS
+- null is assigned by developers
+
+Objects and Symbols
+- Objects created by { ... }
 
 ### 1.6. Program Flow
 
