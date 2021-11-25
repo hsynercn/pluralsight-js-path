@@ -379,7 +379,10 @@ Introduction
 Conditional if
 ```js
 if (5 === 5) {
-    console.log('Yes');
+    console.log('Yes'); //prints
+}
+if (5 > 5) {
+    console.log('No');  //does not print
 }
 let state = 'FL';
 if (state !== 'FL') {
@@ -392,7 +395,7 @@ We do not use ==, if types are different == attempts to convert them to string, 
 | :---: |:---:|
 |false|EVERYTHING NOT FALSY|
 |0|true|
-|"" or ''|0.5|
+|"" or '' (empty strings)|0.5|
 |null|"0"|
 |undefined||
 |Nan||
@@ -403,8 +406,9 @@ if (1.1 + 1.3 !== 2.4) {
     console.log("They are not different");
 }
 ```
-To overcome this problem we can use toFixed method, but toFixed method returns a string. We can add a + sign to convert result string to number.  
+To overcome this problem we can use **toFixed** method, but toFixed method returns a string. We can add a + sign to convert result string to number.  
 ```js
+//we need to convert returned string to number by adding a plus sign before the parenthesis
 if ( +(1.1 + 1.3).toFixed(2) === 2.4) {
     console.log("They are different");
 }
@@ -415,7 +419,7 @@ if() ... else
 let price = 20;
 if(price > 20) {
     console.log("greater than 20");
-} else if() {
+} else if(price < 20) {
     console.log("less or equal to 20");
 }
 ```
