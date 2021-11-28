@@ -450,7 +450,8 @@ let message = (price > 10) ? 'expensive' : 'cheap';
 Block Scope Using Let
 ```js
 if(true) {
-    const value = 'yes';
+    let const someValue = "test";
+    let value = 'yes';
     console.log(value);
 }
 //console.log(value); we cant access value outside of the block
@@ -485,6 +486,26 @@ do {
 } while (count < 5);
 //1 2 3 4
 ```
+
+**Summary**
+
+if ... else Statements
+
+Truthy and falsy expressions
+- "0" is true
+- Every number is true except 0
+
+Comparing === to ==
+- Always use === and !== as a best practice
+
+The ternary operator
+- (condition) ? (true statement) : (false statement)
+
+Block scope
+- Variables declared with let or const are block scoped
+
+Loops: for, while, do...while
+- Be certain loops will complete
 
 ### 1.7. Functions
 
