@@ -509,17 +509,19 @@ Loops: for, while, do...while
 
 ### 1.7. Functions
 
+We can call a function with name or a variable.
+
 Introduction
 - Function basics
 - Function expression
 - Passing information to functions
-- Function raturn values
+- Function return values
 - Function scope
 - Using functions to modify web pages
 
 Function Basics  
 ```js
-function showMessage() {
+function showMessage() { //function block
     console.log("in a function");
 }
 showMessage();
@@ -528,7 +530,7 @@ showMessage();
 ```
 Function Expressions
 ```js
-//function decleration
+//function declaration
 function showMessage() {
 }
 
@@ -537,15 +539,16 @@ let fn = function () {
 }
 fn()
 
-//in function expression function name is optional but we can't use name to call that function
+//in function expression function name is optional, but we can't use name to call that function
 let myFunc = function testFunction() {
 
 }
-//testFunction(); gives reference error
+//testFunction(); gives Uncaught ReferenceError: testFunction is not defined
 ```
 
 Passing Information to Functions  
-We use comma seperated parameters to transfer info to function.
+
+We use comma separated parameters to transfer info to function.
 ```js
 function showMessage(message, secondMessage) {
     console.log(message, secondMessage);
@@ -554,7 +557,7 @@ showMessage("Hello", " World");
 showMessage("Test", " this");
 ```
 
-If we don't supply values for all parameters they will be set to undefined.
+**If we don't supply values for parameter it will be set to undefined.**
 
 ```js
 function myFunction(message, secondMessage) {
@@ -564,7 +567,8 @@ function myFunction(message, secondMessage) {
 myFunction();
 ```
 
-Function Return Values  
+Function Return Values
+
 We use return to get information out.
 ```js
 function getCode(value) {
@@ -574,8 +578,9 @@ function getCode(value) {
 console.log(getCode(2));// 84
 ```
 
-Function Scope  
-We encapsulate code in function scope, parameters can't leak out. 
+Function Scope
+
+We encapsulate code in function scope, parameters can't leak out. But a function has access to global scope.
 ```js
 function getCode(value) {
     let code = value * 42 
@@ -585,7 +590,8 @@ let resultCode = getCode(2);
 console.log(code);//reference error, we cen't access code variable out of function scope
 ```
 
-Nested functions  
+Nested functions
+
 We need to pay attention to outer and local scope.
 ```js
 let key = 42;//outer most scope
@@ -599,6 +605,22 @@ function getCode(value) {
 }
 let code = getCode(2);
 ```
+
+**Summary**
+
+Function
+- function name() {...} //declaration
+- let fn = function() {...} //expression
+
+Passing information to functions
+- myFunction(a, b, c)
+
+Function return values
+- return value;
+
+Function scope
+- local scope or closest to local scope
+
 ### 1.8. Objects and the DOM
 
 DOM:Document Object Model  
@@ -606,7 +628,7 @@ DOM:Document Object Model
 Introduction
 - Object Properties and Methods
 - Passing Objects to Functions
-- Standart Built-in Objects
+- Standard Built-in Objects
 - The Document Object Model (DOM)
 - Detecting Button Clicks
 - Showing and Hiding DOM Elements
