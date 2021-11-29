@@ -623,7 +623,7 @@ Function scope
 
 ### 1.8. Objects and the DOM
 
-DOM:Document Object Model  
+**DOM:Document Object Model**  
 
 Introduction
 - Object Properties and Methods
@@ -633,7 +633,8 @@ Introduction
 - Detecting Button Clicks
 - Showing and Hiding DOM Elements
 
-Object Properties  
+Object Properties
+
 Group of values or properties.
 ```js
 let person = {
@@ -668,14 +669,17 @@ let person = {
 }
 ```
 
-Object Methods  
-Traditionally printInfo called as method because it attached to a object.
+Object Methods
+
+Traditionally printInfo called as **method** because it attached to an object.
 ```js
 let person = {
     name: 'Tom',
     age: 32,
     printInfo: function() {
-        console.log(this.name + " is " + this.age);
+        console.log(
+            this.name + //this refers to current object
+            " is " + this.age);
     }
 }
 person.printInfo();
@@ -707,19 +711,28 @@ incrementAge(person);
 console.log(person.age)
 ```
 
-Standart Build-in Objects  
+Standard Build-in Objects  
 - Array
 - Date
 - Math
-- String
+- String ...
 
-The Document Object Model(DOM)  
-We can access elements with their ids.
 ```js
-document.getElementById('message');
+let now = new Date();
+let string = now.toDateString();
+console.log(Math.abs(-42)); //prints 42
+```
+
+The Document Object Model(DOM)
+
+We can access elements with their IDs.
+```js
+document.getElementById('message').textContent = "Hello";
 ```
 
 Styling DOM Elements
+
+Normally we style a web page with CSS file or pre-processor tech such as **Less** or **Sass**.
 ```js
 document.getElementById('message').style.color = 'red';
 ```
@@ -732,6 +745,53 @@ button.addEventListener('click', function() {
     console.log("click");
 });
 ```
+
+Showing and Hiding DOM Element
+
+
+
+```js
+
+//we can add a handler for specific events
+button.addEventListener('click', function() {
+    const review = document.getElementById('review');
+    const button = document.getElementById('see-review');
+
+    if(review.classList.contains('d-none')) {
+        review.classList.remove('d-none');
+        button.textContent = 'CLOSE REVIEW';
+    } else {
+        review.classList.add('d-none');
+        button.textContent = 'SEE REVIEW';
+    }
+});
+```
+
+**Summary**
+
+Object properties and methods
+- obj.propName
+- obj['propName']
+
+Passing objects to functions
+- Functions can change an object's properties and methods
+
+Standard built-in objects
+- Date, Math, String, Number
+
+The Document Object Model(DOM)
+- The document object
+
+Styling DOM elements
+- element.style.cssProp = 'value'
+
+Detecting buttons clicks
+- element.addEventListener(event, fn)
+
+Showing and Hiding DOM Elements
+- element.classList.add(className)
+- element.classList.remove(className)
+- Element.classList.contains(className)
 
 ### 1.9. Arrays
 
