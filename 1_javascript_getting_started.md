@@ -795,7 +795,10 @@ Showing and Hiding DOM Elements
 
 ### 1.9. Arrays
 
+We hold multiple objects or values with arrays.
+
 Introduction
+- Creating and initializing arrays
 - Accessing array items
 - Manipulating arrays
 - slice() and splice()
@@ -812,54 +815,57 @@ let values3 = ['a', 'b', 'c'];
 console.log(values3);//["a", "b", "c"]
 ```
 
-Array is not a bultin type
+Array is not a built-in type
 ```js
 let values = [1, 2, 3];
 console.log(typeof values);//object
 
 //we can check array state
-console.log(Array.isArray(values));
+console.log(Array.isArray(values)); //true
 ```
 
 Accessing Array Items  
 ```js
 let values = ['a', 'b', 'c'];
-console.log(values[0]);// a
-console.log(values[1]);// b
-console.log(values[2]);// c
-console.log(values[3]);// undefined
+console.log(values[0]); //a
+console.log(values[1]); //b
+console.log(values[2]); //c
+console.log(values[3]); //undefined
 
-values[0] = "aaa";
+values[0] = "aaa"; //change value
 ```
 
 Manipulating Arrays  
 ```js
 const values = [ 'a', 'b', 'c' ];
-values.push('d', 'e');// a, b, c, d, e
-const lastValue = values.pop();// e
-const firstValue = values.shift();// a
-values.unshift('hello', 'world');// hello, world, b, c, d, e
+values.push('d', 'e'); //a, b, c, d, e
+const lastValue = values.pop(); //e
+const firstValue = values.shift(); //firstValue <- a, array: b, c, d, e
+values.unshift('hello', 'world'); //hello, world, b, c, d, e
 ```
 
-slice() and splice()  
-slice creates a new array, splite inserts/deletes old array.
+slice() and splice()
+
+
+**slice** creates a new array original array stays same, **splice** inserts/deletes old array.
 ```js
 //slice
 const values = ['a', 'b', 'c'];
-const newValues = values.slice(1,2);
+const newValues = values.slice(1, 2); //begin element:1, ending element:2 ending element is not included
 console.log(newValues);//b
 ```
 
 ```js
 //splice
 const values = ['a', 'b', 'c'];
-values.splice(1, 1);//delete start index, number of items we want to delete
-console.log(values);// a, c
+values.splice(1, 1); //delete start index, number of items we want to delete
+console.log(values); // a, c
 
-values.splice(1, 0 ,'foo');// start index 1, we delete 0 element, a foo c
+values.splice(1, 0 ,'foo'); // start index 1, we delete 0 element
+console.log(values); //a, foo, c
 ```
 
-Array Searching and Looping  
+Array Searching and Looping
 ```js
 //indexOf()
 const values = [ 'a', 'b', 'c' ];
@@ -899,6 +905,32 @@ const containers = document.getElementsByClassName('container');
 containers[2].classList.add('d-none');
 ```
 
+Summary
+
+Creating and initializing arrays
+- const arr = [1, 2, 3]
+- const arr = Array.of(1, 2, 3)
+
+Accessing array items
+- arr[index] - zero based
+
+Manipulating arrays
+- push() and pop()
+- shift() and unshift()
+
+slice() and splice()
+- slice() creates a new array
+- splice(idx, deleteCount)
+- splice(idx, deleteCount, newItems)
+
+Array searching and looping
+- indexOf() and find()
+- filter()
+- forEach()
+
+Arrays in the DOM
+- document.getElementByClassName()
+
 ### 1.10. Scope and Hoisting
 
 Introduction
@@ -909,7 +941,8 @@ Introduction
 - Strict mode
 
 Global Scope  
-When we use a loaded js directly we use global scope.
+
+When we use a loaded JS directly we use global scope. Don't use multiple variables under global scope.
 ```js
 let productId = 123;
 function showId() {
@@ -937,32 +970,36 @@ function showProductId() {
     let id = 123;
     function fix() {
         let id = 321;
-        console.log(id);//321
+        console.log(id); //321
     }
     fix();
-    console.log(id);//123
+    console.log(id); //123
 }
 showProductId();
 ```
 
 var and Hoisting  
-Because of hoisting id variable set to undefined when JS executed.
+
+Because of hoisting ID variable set to undefined when JS executed.
 ```js
 id = 123;
-console.log(id);//123
-var id = 0;
+console.log(id); //123
+var id;
 ```
 
-Because of hoisting we can call show function before it's decleration. JS engine parses functions in first pass.
+Because of hoisting we can call show function before its declaration. JS engine parses functions in first pass. JS file gets executed after 2 passes.
 ```js
 show();
-function show() {
+function show() { //function declaration is hoisted
     console.log("123");
 }
 ```
 
-Undeclared Variables and Scrict Mode  
-In early JS version we can use variables without decleration.
+Hoisting is fine with functions but variables and constants use let and const and do not use var.
+
+Undeclared Variables and Strict Mode
+
+In early JS version we can use variables without declaration.
 ```js
 //bad example
 productId = 1;
@@ -975,4 +1012,19 @@ After several releases strict mode is added.
 let id = 1;
 console.log(id);
 ```
+
+**Summary**
+
+Global scope
+- All functions can access items
+
+Function scope
+- Resolve names by looking at functions, then surrounding functions, then global scope
+
+var and Hoisting
+- Use let and const
+- Functions declarations are fine
+
+Undeclared variables and strict mode
+- 'use strict'
 
