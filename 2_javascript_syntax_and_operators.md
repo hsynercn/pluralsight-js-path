@@ -362,12 +362,12 @@ Assignment Operators
 
 ```js
 let price = 10;
-price += 20;//30
-price -= 20;//10
-price *= 10;//100
-price /= 10;//10
-price **= 2;//100
-price %= 10;//0
+price += 20; //30
+price -= 20; //10
+price *= 10; //100
+price /= 10; //10
+price **= 2; //100
+price %= 10; //0
 ```
 
 Comparison Operators
@@ -384,21 +384,21 @@ Comparison Operators
 | Not equal in value and type(!==) | price !== "10" |
 
 ```js
-10 == 10;//true
-10 === 10;//true
-10 == "10";//true
-10 === "10";//false
+10 == 10; //true
+10 === 10; //true
+10 == "10"; //true
+10 === "10"; //false
 ```
 
 Ternary operator
 ```js
-let mssg = 10 > 9 ? "greater" : "smaller";
+let message = 10 > 9 ? "greater" : "smaller";
 ```
 
-'use strict'  
-Ignored by older browsers.  
-Forces all variable to be declared.  
-Mistyped variable names are created globally scoped.  
+'use strict'
+* Ignored by older browsers.  
+* Forces all variable to be declared.  
+* Mistyped variable names are created globally scoped.  
 
 ```js
 'use strict';
@@ -415,6 +415,18 @@ delete value;
 //can't delete a function
 delete useStrictSample;
 ```
+
+**Summary**
+
+Recognize the different operators
+* Math
+* Assignment
+* Comparison
+
+Effects of number + string
+
+Effects of 'use strict'
+
 
 ### 1.5. Working with Logical Operators and Short-circuit Evaluation
 
