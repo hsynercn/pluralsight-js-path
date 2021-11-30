@@ -256,14 +256,14 @@ for(const item of array) {
     if(item.id > 2 ) {
         break;
     }
-    console.log(item.id);// prints only 1, 2 it breaks out of the loop 
+    console.log(item.id); // prints only 1, 2 it breaks out of the loop 
 }
 
 for(const item of array) {
     if(item.id === 3 ) {
         continue;
     }
-    console.log(item.id);// prints 1, 2, 4 it continues the loop with next element
+    console.log(item.id); // prints 1, 2, 4 it continues the loop with next element
 }
 ```
 
@@ -279,7 +279,7 @@ for(let index = 1; index <= 10; index++) {
     if(index % 2 == 1) {
         continue even;
     }
-    console.log(index);// prints even number
+    console.log(index); // prints even number
 }
 ```
 
@@ -309,38 +309,43 @@ Mathematical Operators
 | :---: | :---: |
 | Addition(+) | 2 + 3 |
 | Subtraction(-) | 4 - 2 |
-| Multiplication(+) | 2 * 2 |
+| Multiplication(*) | 2 * 2 |
 | Division(/) | 8 / 4 |
 | Exponentiation(**) | 2 ** 2 |
 | Modulus(%) | 9 % 4 |
 | Increment(++) | index++ |
-| Decrement(--) | index++ |
+| Decrement(--) | index-- |
 
 ```js
 let price = 12;
-console.log(price + 10);//22
-console.log(price - 10);//2
-console.log(price * 10);//120
-console.log(price / 10);//1.2
-console.log(price ** 2);//144
-console.log(price % 10);//2
-
-price = 10;
-console.log(++price);//11
-console.log(price++);//11
-console.log(--price);//11
-console.log(price--);//11
+console.log(price + 10);  //22
+console.log(price - 10);  //2
+console.log(price * 10);  //120
+console.log(price / 10);  //1.2
+console.log(price ** 2);  //144
+console.log(price % 10);  //2
 ```
 
-Plus sign with strings and numbers  
-Strings: Concatenation
-Numbers: Addition 
+When ++ or -- is placed **after** a variable, the current value of the variable is retrieved prior to the increment or decrement. 
+
+```js
+price = 10;
+console.log(price++);  //10
+console.log(++price);  //12
+console.log(--price);  //11
+console.log(price--);  //11
+```
+
+Plus Sign with Strings and Numbers
+* Plus sign is overloaded
+    * Strings: Concatenation
+    * Numbers: Addition 
 
 ```js
 //if one is a string -> concatenation
-let result = 100 + "200";// "100200"
+let result = 100 + "200"; // "100200"
 //we can convert it to a numeric
-let result2 = 100 + (+"200");// 300
+let result2 = 100 + (+"200"); // 300
 ```
 
 Assignment Operators
