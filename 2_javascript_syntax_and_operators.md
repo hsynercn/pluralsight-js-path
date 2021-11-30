@@ -6,7 +6,7 @@ Major topics
 - Basics of JavaScript syntax and operators
 - Switch statement 
 - For/in and for/of
-- Math, comprasion, and logical operators
+- Math, comparison, and logical operators
 - Truthy and falsy
 - Exception handling
 - Data types
@@ -14,14 +14,14 @@ Major topics
 - Spread operator
 
 Modules
-- All Abount the Switch Statement
+- All About the Switch Statement
     - Simplify multiple if else statements
     - Block level scope issue/resolution
 - The Difference Between for/in and for/of
     - Using the appropriate for loop
     - Break, continue and labels
-- Using MAth and Comprasion Operators
-    - Demos od operators
+- Using Math and Comparison Operators
+    - Demos of operators
     - 'use strict'
 - Working with Logical Operators and Short-circuit Evaluation
     - Truthy and falsy
@@ -36,12 +36,13 @@ Modules
     - Use of 'this' in different scopes
     - Call() and apply() methods
 - Using the Powerful Spread Operator
-    - Maipulating arrays
+    - Manipulating arrays
     - Passing arrays to functions
 
 ### 1.2. All About the Switch Statement
 
-Switch  
+Switch
+
 Use instead of multiple if else statements. We use 'case' for cases, 'break' to exit cases, 'default' for no match. 
 
 ```js
@@ -54,21 +55,21 @@ function simpleSwitch() {
         case 2:
             console.log("Product 2");
             break;
-        default://default can be at anywhere, for a better practice we put it at the end
+        default: //default can be at anywhere, for a better practice we put it at the end
             console.log("Product none");
             break;
     }
 }
 ```
 
-Multiple case statements
+Multiple Case Statements
 
 ```js
 function simpleSwitch() {
     let id = 2;
     switch (id) {
         case 1:
-        case 3:
+        case 3: //without break it falls to next case
         case 4:
             console.log("Product 1 or 3 or 4");
             break;
@@ -98,13 +99,14 @@ function simpleSwitch() {
 }
 ```
 
-Switch uses strict comprasion, type and value must match.
+Switch uses strict comparison, **type and value must match**.
+
 ```js
 let id = "2";
 //we get unknown product, type does not match
 switch (id) {
     case 1:
-        console.log("prouct 1");
+        console.log("product 1");
         break;
     case 2:
         console.log("product 2");
@@ -116,6 +118,9 @@ switch (id) {
 ```
 
 Block Level Issues with Switch Statements
+
+Each case statement is **not a block**. We make a statement block by wrapping in braces.
+
 ```js
 //we get identifier already been declared error from this implementation
 let id = 2;
@@ -133,7 +138,7 @@ switch (id) {
 
 To fix scope problem we can use local scope.
 ```js
-//we get identifier already been declared error from this implementation
+//we get identifier already been declared error from this implementation if we don't use local scope
 let id = 2;
 switch (id) {
     case 1: {
@@ -149,6 +154,14 @@ switch (id) {
 }
 ```
 
+**Summary**
+
+Use switch statement for readability
+
+More efficient than multiple if...else statements
+
+Be careful with block level scope
+
 ### 1.3. The Difference Between for/in and for/of
 
 Module content;
@@ -159,9 +172,10 @@ Module content;
 - Labeled statements
 
 For/in Statement  
-Iterates over elements of object.  
-Returns key (property/method) name.
-object[key] returns value.
+- Iterates over elements of object.  
+- Returns key (**all properties and methods**) name.
+- object[key] returns value.
+
 ```js
 let product = {
     "id": 1,
@@ -170,12 +184,13 @@ let product = {
 };
 //in keyword grabs all property and method names from an object
 for(const key in product) {
+    //any object in JS can use dot notation or an index to retrieve a value
     console.log("key:'" + key + "'=" + product[key]);
 }
 ```
 For/of Statement  
-Iterates over values in array, string, etc.
-Returns object for each iteration.
+- Iterates over values in array, string, etc.
+- Returns **an object** for each iteration.
 ```js
 let objects = [
     {"name": "a"},
@@ -184,19 +199,30 @@ let objects = [
     {"name": "d"}
 ];
 for(const item of objects) {
-    console.log(JSON.stringfy(item));
-}
-
-let iterateStrng = "Hello World";
-for(const char of iterateStrng) {
-    console.log(char)// prints H,e,l,l,o, ,W,o,r,l,d
+    console.log(JSON.stringify(item));
 }
 ```
 
-Difference for...in and for...of   
+A string is an array of characters. An array is an iterable object, so string is an iterable object. 
+
+```js
+let iterateString = "test";
+for(const char of iterateString) {
+    console.log(char);
+    /* prints
+    t
+    e
+    s
+    t
+    */
+}
+```
+
+Difference for...in and for...of
+
 Both for...in and for...of are looping constructs which are used to iterate over data structures. The only difference between them is the entities they iterate over:
-- for...in iterates over all enumerable property keys of an object
-- for...of iterates over the values of an iterable object like arrays, strings, and node lists.
+- for...in iterates over all **enumerable property keys** of an object
+- for...of iterates over the **values of an iterable object** like **arrays, strings, and node lists**.
 
 If we use for...of with a non-iterable object we get 'object is not iterable' error
 
@@ -206,17 +232,18 @@ arr.addedProp = "addedProp";
 for(const elKey in arr) {
     console.log(elKey);
 }
-// prints 1, 2, 3, addedProp
+// prints object keys 0, 1, 2, addedProp
 
 for(const elValue of arr) {
     console.log(elValue);
 }
-//prints val1, val2, val3
+//prints iterable values val1, val2, val3
 ```
 
-Break and Continue  
-Break: Leave a loop early
-Continue: Next iteration
+Break and Continue
+
+* Break: Leave a loop early
+* Continue: Next iteration
 
 ```js
 let array = [
@@ -240,9 +267,10 @@ for(const item of array) {
 }
 ```
 
-Labelled Statement  
-Define a location to "goto"
-Don't use this shit
+Labelled Statement
+
+* Define a location to "goto"
+* Don't use this shit
 
 ```js
 //even:  <- this is a label
@@ -251,9 +279,19 @@ for(let index = 1; index <= 10; index++) {
     if(index % 2 == 1) {
         continue even;
     }
-    console.log(inde);// prints even number
+    console.log(index);// prints even number
 }
 ```
+
+**Summary**
+
+Specialized for loops for iteration
+- for/in for object properties/methods
+
+Break and continue controls floe
+
+Label is a "goto" mechanism
+- Avoid at all costs
 
 ### 1.4. Using Math and Comparison Operators
 
