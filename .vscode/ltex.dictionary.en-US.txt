@@ -1,2 +1,4 @@
 ReferenceError
 const
+FALSY
+falsy

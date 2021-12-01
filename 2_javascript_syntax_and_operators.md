@@ -440,8 +440,14 @@ Module Content
 
 | True | False |
 | :---: | :---: |
-| "Hey", 10, Boolean true | null, undefined, NaN, Boolean false |
+| EVERYTHING NOT FALSY | false |
+| 10 | 0 |
+| true | "" or ''(empty string) |
+| "Hello" | null |
+|| Nan |
+|| undefined|
 
+True values
 ```js
 let price = 200;
 let color = "red";
@@ -456,33 +462,39 @@ if(color) {
     console.log("color has a value");
 }
 
-//these cases results false in if
-color = null;
+```
+
+False values
+
+```js
+//these cases results false in an if
+let color = null;
 color = "";
 color = undefined;
 let value2;
-value2 = 100 / "test";
-
+value2 = 100 / "test"; //Nan
+let result = color ? true : false;
+console.log(result); //false 
 ```
 
 Logical Operators
 
-| Operator | Exmple |
+| Operator | Example |
 | :---: | :---: |
 | And(&&) | price > 10 && price < 100 |
-| Or(||) | price <= 10 || price >= 100 |
+| Or(&#124;&#124;) | price <= 10 || price >= 100 |
 | Not(!) | !(price > 10) |
 
 ```js
 let price = 50;
-price > 10 && price < 100;//true
-price > 10 || price > 100;//true
-!(price > 100);//true
+price > 10 && price < 100; //true
+price > 10 || price > 100; //true
+!(price > 100); //true
 ```
 
-Short Circuiting
+**Short Circuiting**
 
-Optimzation for logical expressions  
+Optimization for logical expressions.  
 Bypassed subsequent expressions in && or || based truthy or falsy
 
 ```js
@@ -500,20 +512,56 @@ function getFalse() {
 }
 ```
 
+Order of Precedence
+
+| Precedence | Operator type | Associativity |
+| :---: | :---: | :---: |
+| 19 | Grouping | n/a |
+| 16 | Postfix Increment, Postfix Decrement | n/a |
+| 15 | Logical NOT | right-to-left |
+| 15 | Prefix Increment, Prefix Decrement | right-to-left |
+| 14 | Exponentiation (**) | right-to-left |
+| 13 | Multiplication (*), Division (/), Remainder (%) | left-to-right |
+| 10 | Less Than (<), Less Than Or Equal (<=) | left-to-right |
+| 10 | Greater Than (>), Greater Than Or Equal (>=) | left-to-right |
+| 9 | Equality (==), Inequality (!=) | left-to-right |
+| 9 | Strict Equality (===), Strict Inequality (!==) | left-to-right |
+| 5 | Logical AND (&&) | left-to-right |
+| 4 | Logical OR (&#124;&#124;) | left-to-right |
+| 2 | Assignment | right-to-left |
+
+**Summary**
+
+True
+- Boolean true
+- Variable that has a value
+
+False
+- null, Nan, undefined, 0, "" or ''(empty string), false
+
+Logical operators (and, or, and not)
+- Helps you make complicated decisions
+
+Remember short-circuiting
+- Determines if a function runs
+
 ### 1.6. Utilizing JavaScript Exception Handling
 
 Module content:
 - Handling exceptions
+    - try...catch statements
+    - finally statement
 - Throw a custom exception
 - Check for type of error
 
+A JS error object always has 'name' and 'message' properties.
 ```js
 try {
     //some code that could fail
 } catch (error) {
     //do something with error
 } finally {
-    //thes code always runs
+    //this code always runs
 }
 ```
 
@@ -521,7 +569,7 @@ try {
 let result;
 try {
     result = x / 10;
-    console.log(result);
+    console.log(result); //didn't execute
 } catch (error) {
     console.log(error.message);//x is not defined
 } finally {
@@ -531,8 +579,8 @@ try {
 
 Throw
 
-Can throw your own custom error
-Create an object with at least two properties "message" and "name"
+Can throw your own custom error.  
+Create an object with at least two properties "message" and "name".
 
 ```js
 try{
@@ -546,6 +594,7 @@ function throwsSomeError() {
     try{
         result = x / 10;
     } catch (error) {
+        //add name and message properties
         throw{
             "message": "This is my exception",
             "name": "Custom exception"
@@ -594,7 +643,7 @@ function handleError(error) {
 
 Summary
 - Always add try...catch around risky code
-- Use fnally block if required
+- Use finally block if required
 - Throw custom error to communicate specific info
 - Change how you handle errors based on the type of error
 
