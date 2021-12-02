@@ -665,7 +665,8 @@ Primitive Data Types
 | Data type | Description |
 | :---: | :---: |
 | boolean | true or false |
-| undefined | no value |
+| null | no value |
+| undefined | a variable declared, but has no value |
 | number | integers, decimals, float. etc. |
 | string | a series (array) of characters |
 
@@ -681,7 +682,7 @@ Object Data Types
 | new Number | An object that contains a numeric value |
 | new String | An object that contains a char or chars |
 
-Better use primitive boolean, number, and string. Object versions are costly.
+Better use primitive boolean, number, and string. Object versions are costly and slower to access.
 
 typeof Operator
 
