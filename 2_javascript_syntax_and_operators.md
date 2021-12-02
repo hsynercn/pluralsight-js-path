@@ -815,7 +815,7 @@ Can use constructor property.
 Module content:
 - What is 'this'
 - Learn how 'this' changes
-- Global adn function scope
+- Global and function scope
 - Event handlers
 - Object literal
 - call()/apply() methods
@@ -823,10 +823,11 @@ Module content:
 
 Introduction to the 'this' Keyword
 
-Refers to an object  
-That object in which the current code is running  
-Sometimes the object can be changed
+Refers to an object.  
+That object in which the current code is running.  
+Sometimes the object can be changed.
 
+JS is running within the global window object.
 ```js
 //in HTML script block this=global window object
 console.log(this.toString());//prints [object Window]
@@ -868,10 +869,10 @@ Different values based on executing context:
 - In a function: global object
 - In an event: element that received the event
 
-Call()/apply() methods referts to object passed in.  
+Call()/apply() methods refers to object passed in.  
 'use strict' also affects 'this'.
 
-Use strict changes the function scope behaviour. Without 'use strict' function scope acts as global scope.
+Use strict changes the function scope behavior. Without 'use strict' function scope acts as global scope.
 ```html
 <script>
     'use strict'
@@ -888,8 +889,12 @@ Use strict changes the function scope behaviour. Without 'use strict' function s
 ```
 
 'this'in Event Handlers
- ```html
 
+'this' refers to HTML element that it's attached to.
+ ```html
+<button onclick="this.style.background='Red'">
+    In event handler
+</button>
 <button onclick="eventHandler(this)">
     Button
 </button>
@@ -918,13 +923,20 @@ console.log(product.grossProfit());// $372.11
 
 'this' with call() and apply() Methods
 
-call():It can be used to invoke (call) a method with an owner object as an argument (parameter). With call(), an object can use a method belonging to another object.
+call(): It can be used to invoke (call) a method with an owner object as an argument (parameter). With call(), an object can use a method belonging to another object.
 
-Call and apply are very similar, both invoke the function tehy are called on, and take 'this' argument as their first argument.
+Call and apply are very similar, both invoke the function they are called on, and take 'this' argument as their first argument.
 
-Their parameter are different  
+But their other parameters are different.
+- **apply**: lets you invoke the function with arguments as an array.
+- **call**: requires the parameters be listed explicitly.  
 
-someFunc.call(thisArg, 1, 2, 3) VS someFunc.apply(thisArg, [1, 2, 3])
+**"A for array and C for comma."**
+
+| Call | Apply |
+| :---: | :---: |
+| someFunc.call(thisArg, 1, 2, 3) | someFunc.apply(thisArg, [1, 2, 3] |
+
 
 ```js
 
@@ -972,10 +984,10 @@ Summary:
     - HTML element
     - Method owner
 - 'use strict' makes 'this' undefined in functions
-- What is pased to call() and apply() methods becomes 'this'
+- What is passed to call() and apply() methods becomes 'this'
 - constructor functions owner is 'this'
 
-### 1.9. Using the Powerful Spred Operator
+### 1.9. Using the Powerful Spread Operator
 
 Module content:
 - Power of spread
@@ -984,10 +996,11 @@ Module content:
 - Shallow copy objects
 - Call function with multiple parameters
 
-Spread Operator  
+Spread Operator
+
 Expand any 'iterable' such as a string or array into an array.  
-For passing multiple arguments to mthod.  
-The syntaxx uses the ellipsis symbol( ... ).  
+For passing multiple arguments to method.  
+The syntax uses the ellipsis symbol(...).  
 Always on the right-side of an equal sign.  
 
 NOTE: IE and Edge do not support spread
