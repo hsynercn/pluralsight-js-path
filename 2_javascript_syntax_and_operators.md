@@ -724,7 +724,7 @@ console.log(typeof test);       //function
 
 Object Data Type / Constructor
 
-All object data types inherit from Object(not primitives).  
+All object data types inherit from Object(**not the primitives**).  
 Object has constructor property. 
 Returns a reference to the object itself.  
 
@@ -766,9 +766,10 @@ function isNullOrUndefined(value) {
     return value === null || value === undefined;
 }
 ```
-instanceof Operator  
-Tests if inherits from Object(not a primitive)  
-Tests for a specific type of object  
+instanceof Operator
+
+Tests if inherits from Object(not a primitive).  
+Tests for a specific type of object.
 
 ```js
 //object constructor function
@@ -792,16 +793,20 @@ console.log(prod instanceof Object);//true
 console.log(date instanceof Date);//true
 console.log(date instanceof Object);//true
 console.log(name instanceof String);//true
-console.log(value instanceof String);//false
+console.log(value instanceof String);//false, primitives are not objects
 console.log(value instanceof Object);//false
-
 ```
 
-Important to understand the difference between primitives and Objects.  
-Use primitives where possible.  
+**Summary**
+
+Important to understand the difference between primitives and Objects.
+
+Use primitives where possible.
+
 Detecet data types using typeof and instanceof.
 - typeof for checking type
 - instanceof for checking what type of object
+
 Can use constructor property.
 - Both on objects and primitives
 
