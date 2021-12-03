@@ -1007,7 +1007,7 @@ NOTE: IE and Edge do not support spread
 
 Copy a String to an Array Using Spread
 
-Convert string to array by spread operator
+Convert string to array by spread operator.
 ```js
 function stringToArray() {
     return [..."test"]
@@ -1087,3 +1087,20 @@ prod2.location.city = "17";
 console.log(prod1.location.city);//17
 console.log(prod2.location.city);//17
 ```
+
+**Summary**
+
+* Spread operator simplifies code
+* More concise
+* Can make code harder to read
+* Not supported by all browsers
+* switch statement simplifies our code
+* for/in and for/of provide specialized looping
+* Math, logical and comparison operators
+* Short circuiting makes our code efficient
+* Can now handle exceptions
+* typeof and instanceof provide us a look into our variables
+* 'this' keyword changes based on scope
+* Spread can make our code harder to read
+
+
