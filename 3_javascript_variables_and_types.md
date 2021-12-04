@@ -48,3 +48,177 @@ For a better implementation we can use a template.
  price:${data.price}`;
  console.log(summaryText);
  ```
+
+ Create a Tagged Template Literal
+
+We can use tagged template literals to prerender template.
+
+```js
+//backslash t is becomes visible in HTML after raw function, with any special chars
+//also 'String.raw' is actually a tag for template literal
+let applicationCode = String.raw`\t${createApplicationId()}`;
+
+//add HTML breaks
+let summaryText = highlightText
+        `Dear ${la.ApplicantName}, <br>
+    your application for ${"$" + la.LoanAmount}, ${reviewText}.<br>
+    Your risk profile is ${riskProfile}.<br>
+    Your unique application code is ${applicationCode}`;
+
+function createApplicationId() {
+    let result = '';
+    let characters = 'ABCDEUVYZabcdrswxyz01789/\\#@$%()*^!';
+    let charactersLength = characters.length;
+    for(var i = 0; i < 8; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+//makes values bold in string
+function highlightText(strings, ...values) {
+    let str = "";
+    for(let i = 0; i < strings.raw.length; i++) {
+        if(i > 0) {
+            str += `<b>${values[i - 1]}</b>`; //HTML bold format fao values
+        }
+        str += strings.raw[i];
+    }
+
+    return str;
+}
+```
+
+The Difference Between Let and Const
+
+**Block Scope**
+
+X has the same value inside and outside the block. Because var has a global and function scope, does not have a block scope. **let** is different, it has block scope. 
+```js
+function myFunction() {
+   var x = 10;
+
+   if(true) {
+      var x = 'Hello';
+   }
+
+   //x is 'Hello' here
+}
+myFunction();
+```
+
+**var** and **let** declarations are different. It is not allowed to declare an existing variable as a **let** in the same scope no matter if the existing variable was a let or var. But we can redeclare a let within its own scope. 
+```js
+var x = 1;
+let y = 2;
+let y = 4; //NOT ALLOWED
+
+if(true) {
+   var x = 10; //allowed
+   let y = 4;
+   let y = 2; //NOT ALLOWED
+}
+```
+
+The Const Keyword
+
+We cannot change the thing to which const is assigned to.
+```js
+const arr = [3, 4, 5];
+arr = 3; //error
+arr = "Hello"; //error
+arr = null; //error
+arr[0] = 22; // ok
+```
+
+To prevent change on an object we can use freeze.
+```js
+var arr = Object.freeze([3, 4, 5]);
+```
+Keywords
+- **var**
+   - No block scope
+   - Can be redeclared anywhere
+   - Can be used and reassigned anywhere
+
+- **let**
+   - Block scope
+   - Can not be redeclared within scope
+   - Can be reassigned within scope
+- **const**
+   - Block scope
+   - Can not be reassigned or redeclared
+   - The value it references can change inside
+
+Destructing Syntax to Get Values from Arrays and Objects
+
+**Array Deconstruction**
+
+Detailed implementation.
+```js
+let myArray = [1, 2, 3, 4];
+
+let temp1 = myArray[0];
+let temp2 = myArray[1];
+let temp3 = myArray[2];
+let temp4 = myArray[3];
+```
+
+We can use destructing. We can get a smaller part of original array. If original array can't populate all variables we get undefined variables. 
+```js
+let myArray = [1, 2, 3, 4, 5, 6 ,7];
+
+let[temp1, temp2, temp3, temp4] = myArray; //1, 2, 3, 4
+
+let myArray2 = [1, 2, 3];
+
+let[temp1, temp2, temp3, temp4] = myArray2; //1, 2, 3, undefined
+```
+
+Array deconstruction with default values.
+```js
+let myArray2 = [1, 2, 3];
+let [
+   temp1,
+   temp2 = true,
+   temp3,
+   temp4 = false,
+   ...others
+] = myArray2;
+```
+
+**Object Deconstruction**
+
+Similar to array deconstruction, we can use default values.
+```js
+class LoanApplication() {
+   Id = 1;
+   ApplicantName;
+   LoanPurpose;
+   LoanAmount;
+}
+
+let {
+   Id,
+   ApplicantName = "Harry"
+} = myLoanApplication;
+```
+
+**Summary**
+
+- Template literals
+   - 'Dear ${name}'
+   - Multiline
+- Using tagged template literals
+   - We can highlight text
+   - String.raw
+- let and const
+   - let and const provide block scope 
+   - let can be reassigned but not redeclared
+   - const can't be reassigned or redeclared
+- Destructuring syntax
+   - var [a, b, c] = array;
+   - var {Id:a, name:b} = object;
+
+### 1.3. Applying Primitive Types
+

@@ -2,3 +2,5 @@ ReferenceError
 const
 FALSY
 falsy
+redeclared
+redeclared
