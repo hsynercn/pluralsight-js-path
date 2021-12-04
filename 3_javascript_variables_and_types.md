@@ -222,3 +222,24 @@ let {
 
 ### 1.3. Applying Primitive Types
 
+- Test string for specific content
+- Test numbers for type and safety
+- Understanding Symbols in JavaScript
+
+Test string for specific content
+
+Start and end keyword searching.
+```js
+let name = "dr jack";
+name = name.trim().toLowerCase();
+let dr = name.startsWith("dr"); //true
+let md = name.endsWith("md"); //false
+```
+
+Context check.
+
+```js
+let content = "my house";
+content = content.trim().toLowerCase();
+let containsHouse = content.includes("house");
+```
