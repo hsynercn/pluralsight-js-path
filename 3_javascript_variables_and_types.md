@@ -226,7 +226,7 @@ let {
 - Test numbers for type and safety
 - Understanding Symbols in JavaScript
 
-Test string for specific content
+Test String for Specific Content
 
 Start and end keyword searching.
 ```js
@@ -243,3 +243,79 @@ let content = "my house";
 content = content.trim().toLowerCase();
 let containsHouse = content.includes("house");
 ```
+
+Test Numbers for Type and Safety
+
+We can validate an integer input with **isInteger** function.
+```js
+Number.isInteger("");   // false
+Number.isInteger(25);   // true
+Number.isInteger(25.3); // false
+Number.isInteger(25.0); // true
+Number.isInteger(null); // false
+Number.isInteger(infinity);// false
+```
+
+In JS all numbers(integers, floats) stored with same mechanism. They are all stored as double-precision floating-point numbers. Because of this some larger numbers can lose precision.
+
+```js
+let result = 9007199254740992 + 1;
+//because of rounding
+console.log(result); //9007199254740992
+```
+We can check safe range with **isSafeInteger**.
+
+```js
+Number.MAX_SAFE_INTEGER; //9007199254740991
+Number.MIN_SAFE_INTEGER; //-9007199254740991
+Number.isSafeInteger(15); //true
+```
+
+Understanding Symbols in JavaScript
+
+Symbols is a primitive datatype that can be used an identifier for object properties. Symbols are globally unique unguessable values.
+
+Every symbol is unique.   
+```js
+let id = Symbol();
+let id2 = Symbol("My Id");
+let id3 = Symbol("My Id");
+
+console.log(id); //symbol
+console.log(id2.toString()); //Symbol(My Id)
+
+id2 === id3; //false
+```
+
+We can get existing symbols form registry.
+```js
+let id = Symbol.for("y Id");
+let id2 = Symbol.for("y Id");
+
+id === id2; //true
+```
+
+We can use symbols inside of object to mark a value is hidden, by this other developers can know that value is hidden.
+```js
+let loan = {
+   name: "Harry",
+   [Symbol.for("income")]: 1500
+};
+
+console.log(loan[Symbol.for("income")]); //1500
+
+//it is not completely hidden
+console.log(loan[Object.getOwnPropertySymbols(loan)[0]]); //1500
+``` 
+
+**Summary**
+- Test strings for content
+   - String.search and trim() and toLowercase()
+   - String.startsWith
+   - String.endsWith
+   - String.includes
+- Test numbers
+   - Number.isInteger
+   - Number.isSafeInteger
+- Symbols in JavaScript
+   - Symbols are unique
