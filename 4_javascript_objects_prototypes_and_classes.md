@@ -58,3 +58,26 @@ console.log(person.isAdult()); //false
 ```
 
 Object Literal Property Shorthand
+
+We can use parameters for object initialization.
+```js
+function registerUser(firstName, lastName) {
+    let person = {
+        firstName: firstName,
+        lastName: lastName
+    };
+    console.log(JSON.stringify(person));
+}
+```
+
+For shorthand syntax we can use this implementation.
+
+```js
+function registerUser(firstName, lastName) {
+    let person = {
+        firstName,
+        lastName
+    };
+    console.log(JSON.stringify(person));
+}
+```
