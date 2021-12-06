@@ -199,4 +199,145 @@ let person = Object.create(
 )
 ```
 
-## 2. JavaScript Object Properties
+## 3. JavaScript Object Properties
+
+Using Bracket Notation to Access Object Properties
+
+For property names that are not valid identifiers.
+```js
+let person = {
+    firstName: 'Jim',
+    lastName: 'Cooper',
+    age: 29,
+};
+person['hair color'] = 'Brown';
+```
+
+Loop for all property names.
+```js
+let person = {
+    firstName: 'Jim',
+    lastName: 'Cooper',
+    age: 29,
+};
+for(let propertyName in person) {
+    console.log(propertyName + ": " + person[propertyName]);
+}
+```
+
+Modifying Properties with Property Descriptor
+
+We can get property info with descriptor method.
+```js
+let person = {
+    firstName: 'Jim',
+    lastName: 'Cooper',
+    age: 29,
+};
+//{value: 'Jim', writable: true, enumerable: true, configurable: true}
+console.log(Object.getOwnPropertyDescriptor(person, "firstName"));
+```
+
+Using the Writable Attribute
+
+```js
+'use strict'
+let person = {
+    firstName: 'Jim',
+    lastName: 'Cooper',
+    age: 29,
+};
+Object.defineProperty(person, 'firstName', {writable: false});
+//Uncaught TypeError: Cannot assign to read only property 'firstName' of object
+person.firstName = "Hello";
+```
+
+Using the Enumerable Attribute
+
+If we set enumerable field of a variable to false we can't see that variable in JSON.stringify or Object.keys.
+```js
+let person = {
+    firstName: 'Jim',
+    lastName: 'Cooper',
+    age: 29,
+};
+
+console.log(Object.keys(person)); //['firstName', 'lastName', 'age']
+
+Object.defineProperty(person, 'firstName', {enumerable: false});
+
+for(let propertyName in person) {
+    console.log(propertyName + ": " + person[propertyName]); //doesn't print firstName
+}
+
+console.log(Object.keys(person)); //['lastName', 'age']
+console.log(JSON.stringify(person)); //{"lastName":"Cooper","age":29}
+console.log(person.firstName);
+```
+
+Using the Configurable Attribute
+
+We can prevent property descriptor modifications with configurable field.
+```js
+let person = {
+    firstName: 'Jim',
+    lastName: 'Cooper',
+    age: 29,
+};
+//we can't it to true again 
+Object.defineProperty(person, 'firstName', {configurable: false});
+
+//we can't change enumerable property
+Object.defineProperty(person, 'firstName', {enumerable: false}); //Uncaught TypeError: Cannot redefine property: firstName
+
+//we can't change configurable property
+Object.defineProperty(person, 'firstName', {configurable: true}); //Uncaught TypeError: Cannot redefine property: firstName
+
+//we can't delete property
+delete person.firstName;
+
+//except writable descriptor, we can change it
+Object.defineProperty(person, 'firstName', {enumerable: false});
+```
+
+Deleting a property.
+
+```js
+'use strict';
+let person = {
+    firstName: 'Jim',
+    lastName: 'Cooper',
+    age: 29,
+};
+delete person.age;
+console.log(JSON.stringify(person)); //{"firstName":"Jim","lastName":"Cooper"}
+```
+
+Creating Property Getters and Setters
+
+```js
+let person = {
+    name: {
+        firstName: 'Jim',
+        lastName: 'Cooper'
+    }
+    age: 29,
+};
+//we can add a new property and add setter and getter for this property
+Object.defineProperty(person, 'fullName',{
+    get: function() {
+        return this.name.first + ' ' + this.name.last;
+    },
+    set: function(value) {
+        var nameParts = value.split(' ');
+        this.name.first = nameParts[0];
+        this.name.last = nameParts[1];
+    }
+});
+
+person.fullName = 'Fred Jones';
+
+console.log(person.fullName); //Fred Jones
+console.log(person.name.firstName); //Fred
+console.log(person.name.lastName); //Jones
+```
