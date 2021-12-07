@@ -341,3 +341,135 @@ console.log(person.fullName); //Fred Jones
 console.log(person.name.firstName); //Fred
 console.log(person.name.lastName); //Jones
 ```
+
+## 3. JavaScript Prototypes and Inheritance
+
+What is Prototype?
+
+Every function is JavaScript has a prototype property. Objects have a prototype, but they don't have a prototype property.
+
+```js
+'use strict';
+let myFunction = function() {};
+
+console.log(JSON.stringify(myFunction.prototype)); //{}
+
+let person = {firstName: 'Jim'};
+
+console.log(JSON.stringify(person.prototype)); //undefined
+
+console.log(JSON.stringify(person.__proto__));// {}
+```
+
+A prototype is an instance of an object in memory.
+
+**A Function's Prototype:**
+It is an object **instance** that will become the prototype for all objects created using this function as a constructor.
+
+**An Objects's Prototype**
+An object's prototype is the object **instance** from which the object is inherited.
+
+If we create a new object with constructor function our new object get it's ```__proto__``` property form function's prototype.
+
+```js
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+//we are manipulating the same object
+Person.prototype.age = 22;
+
+let billy = new Person("Billy", "Rush");
+
+Person.prototype === billy.__proto__; //true, they are same object
+
+console.log(JSON.stringify(billy.__proto__)); //{"age":22}
+```
+
+Instance vs. Prototype Properties
+
+```js
+'use strict';
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+
+Person.prototype.age = 22;
+
+let billy = new Person("Billy", "Rush"); //age: 22
+let jack = new Person("Jack", "Rush"); //age: 22
+
+console.log(billy.age); //22
+console.log(jack.age); //22
+
+//we are adding a new property to jack
+jack.age = 33;
+
+console.log(billy.age); //22
+console.log(jack.age); //33
+
+console.log(jack.__proto__.age); //22
+console.log(jack.hasOwnProperty('age')); //true
+console.log(jack.age); //33
+
+console.log(billy.hasOwnProperty('age')); //false
+console.log(billy.age); //still we can get this value
+```
+
+When we access an object's property JavaScript checks the object itself first, later checks the prototype. Instance property overrides the prototype property.
+
+Changing a Function's Prototype
+
+```js
+'use strict';
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
