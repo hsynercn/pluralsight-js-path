@@ -346,6 +346,8 @@ console.log(person.name.lastName); //Jones
 
 What is Prototype?
 
+Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+
 Every function is JavaScript has a prototype property. Objects have a prototype, but they don't have a prototype property.
 
 ```js
@@ -428,48 +430,187 @@ function Person(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
 }
+
+Person.prototype.age = 22;
+
+let billy = new Person("Billy", "Rush"); //age: 22
+let jack = new Person("Jack", "Rush"); //age: 22
+
+Person.prototype = { age: 18 };
+
+let newObject = new Person("New", "New"); //age: 18
+
+//billy and jack prototype object is a different instance
+console.log(billy.age); //22
+console.log(jack.age); //22
+console.log(newObject.age); //18
 ```
 
+Multiple Levels of Inheritance
 
+By default, all objects in JavaScript inherit from object.
 
+```js
+'use strict';
+function Person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+}
 
+let billy = new Person("Billy", "Rush");
 
+//we always hit a null in prototype chain
+console.log(JSON.stringify(billy.__proto__)); //{}
+console.log(JSON.stringify(billy.__proto__.__proto__)); //{}
+console.log(JSON.stringify(billy.__proto__.__proto__.__proto__)); //null, end of the chain
+```
+We can create a more meaningful inheritance chain.
 
+Creating Prototypal Inheritance Chains
 
+```js
+'use strict';
+function Person(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+    Object.defineProperty(this, 'fullName', {
+        get: function() {
+            return this.firstName + ' ' + this.lastName;
+        },
+        enumerable: true
+    });
+}
 
+function Student(firstName, lastName, age) {
+    Person.call(this, firstName, lastName, age);
+    this._enrolledCourses = [];
 
+    this.enroll = function(courseId) {
+        this._enrolledCourses.push(courseId);
+    }
 
+    this.getCourses = function() {
+        //we can access to Person object's property
+        return this.fullName + 'enrolled courses ' + this._enrolledCourses.join(',');
+    }
+}
+// we need to add these two lines to create a prototype chain
+Student.prototype = Object.create(Person.prototype);
+// we are replacing the Student constructor with newly set Person constructor
+Student.prototype.constructor = Student;
 
+let bill = new Student('Billy', 'Rush', 33);
 
+console.log(JSON.stringify(bill));
+console.log(JSON.stringify(bill.__proto__));
+console.log(JSON.stringify(bill.__proto__.__proto__));
+```
 
+JavaScript Classes
 
+Classes play the exact same role as **constructor functions**. They are templates for creating objects and encapsulating logic related to those objects.
 
+Basically anything we can do with constructor functions, we can do with classes. Classes are really just syntactic sugar for a cleaner way to do all this.
 
+**Class structure is not supported by IE.**
 
+Creating Object with Classes
 
+```js
+'use strict';
+class Person {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+}
 
+let bill = new Person('Bill', 'Rush');
 
+console.log(JSON.stringify(bill)); //{"firstName":"Bill","lastName":"Rush"}
+```
 
+Creating Getters and Setters with Classes
 
+Getter and setter syntax is cleaner than constructor classes.
 
+```js
+'use strict';
+class Person {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+    set fullName(fullName) {
+        let nameParts = fullName.split();
+        this.firstName = nameParts[0];
+        this.lastName = nameParts[1];
+    }
+}
+```
 
+Adding Functions to Classes
 
+```js
+'use strict';
+class Person {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+    set fullName(fullName) {
+        let nameParts = fullName.split();
+        this.firstName = nameParts[0];
+        this.lastName = nameParts[1];
+    }
+    isAdult() {
+        return this.age >= 18;
+    }
+}
+```
 
+Modifying Property Descriptor on Classes
 
+When we create a getter it is created with enumerable set to false. Generally this is not important because we don't iterate over keys of objects frequently.
 
+Classes have prototypes just like functions. Getters and setter live on the prototype. We can change prototype 
 
+```js
+'use strict';
+class Person {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+    set fullName(fullName) {
+        let nameParts = fullName.split(' ');
+        this.firstName = nameParts[0];
+        this.lastName = nameParts[1];
+    }
+    isAdult() {
+        return this.age >= 18;
+    }
+}
+//we can change setter/getter descriptor with Object.defineProperty
+Object.defineProperty(Person.prototype, 'fullName', {enumerable: true});
 
-
-
-
-
-
-
-
-
-
-
-
+let jack = new Person('Jack', 'Black', 22);
+console.log(JSON.stringify(jack));
+```
 
 
 
