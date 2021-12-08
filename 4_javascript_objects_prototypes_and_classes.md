@@ -585,6 +585,7 @@ When we create a getter it is created with enumerable set to false. Generally th
 
 Classes have prototypes just like functions. Getters and setter live on the prototype. We can change prototype 
 
+**Object.keys only returns that object's own enumerable properties.** If we want to check prototype properties we can use **Object.keys(Object.getPrototypeOf(person))**.
 ```js
 'use strict';
 class Person {
@@ -609,8 +610,60 @@ class Person {
 Object.defineProperty(Person.prototype, 'fullName', {enumerable: true});
 
 let jack = new Person('Jack', 'Black', 22);
-console.log(JSON.stringify(jack));
+console.log(Object.keys(Object.getPrototypeOf(jack))); //['fullName']
 ```
+
+Using Inheritance with JavaScript Classes
+
+```js
+'use strict';
+class Person {
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    get fullName() {
+        return this.firstName + ' ' + this.lastName;
+    }
+    set fullName(fullName) {
+        let nameParts = fullName.split(' ');
+        this.firstName = nameParts[0];
+        this.lastName = nameParts[1];
+    }
+    isAdult() {
+        return this.age >= 18;
+    }
+}
+
+//extends keyword provides inheritance
+class Student extends Person{
+    constructor(firstName, lastName, age) {
+        //we are calling the parent class constructor
+        super(firstName, lastName, age);
+        this._enrolledCourses = [];
+    }
+    
+    enroll(courseId) {
+        this._enrolledCourses.push(courseId);
+    }
+
+    getCourses() {
+        return this.fullName + ' enrolled courses ' + this._enrolledCourses.join(',');
+    }
+}
+
+let jack = new Student("Jack", "Black", 22);
+jack.enroll("CS101");
+console.log(jack.getCourses()); //Jack Black enrolled courses CS101
+```
+
+
+
+
+
+
+
 
 
 
