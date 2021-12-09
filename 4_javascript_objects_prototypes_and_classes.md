@@ -658,12 +658,87 @@ jack.enroll("CS101");
 console.log(jack.getCourses()); //Jack Black enrolled courses CS101
 ```
 
+Using Static Properties and Methods
 
+ Static properties and methods are items that you can access on a class without having to first create an instance of that class.
 
+```js
+'use strict';
+class Person {
+    static adultAge = 18;
+    constructor(firstName, lastName, age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+    getInfo() {
+        return `My name is ${this.firstName} ${this.lastName} and I am ${this.age} years old.`
+    }
+    static getAgeLimit() {
+        return this.adultAge;
+    }
+}
+console.log(Person.adultAge); //18
+console.log(Person.getAgeLimit()); //18
+let bill = new Person('Bill', 'Hill', 33);
+console.log(Person.getInfo()); //Uncaught TypeError: Person.getInfo is not a function
+```
 
+There is no getInfo function directly under the Person class.
 
+Using Built-in JavaScript Objects
 
+- Math
+- Date
+- Regex
 
+```js
+console.log(Math.PI); //3.141592653589793
+console.log(Math.max(2, 42, 29)); //42
+console.log(Math.round(29.6)); //30
+```
 
+Managing Dates with the Date Object
 
+```js
+let date = new Date(0);
+console.log(date.toString()); //displayed as local time: Thu Jan 01 1970 02:00:00 GMT+0200 (GMT+03:00)
+
+//for some reason month is zero based, others are 1 based
+let date2 = new Date(2050, 3, 25, 13, 1, 30, 50);
+console.log(date2); //Mon Apr 25 2050 13:01:30 GMT+0300 (GMT+03:00)
+
+//Local machine time zone
+console.log(date.getFullYear());
+console.log(date.getMonth()); //ZERO BASED
+console.log(date.getDate());
+console.log(date.getHours());
+console.log(date.getMinutes());
+console.log(date.getSeconds());
+console.log(date.getMilliseconds());
+
+//Universal Time Zone
+console.log(date.getUTCFullYear());
+console.log(date.getUTCMonth()); //ZERO BASED
+console.log(date.getUTCDate());
+console.log(date.getUTCHours());
+console.log(date.getUTCMinutes());
+console.log(date.getUTCSeconds());
+console.log(date.getUTCMilliseconds());
+```
+
+Validating Strings with the RegExp.test() Function
+
+```js
+let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+regex.test('Stringer1'); //true
+```
+
+Searching Strings with the RegExp.exec() Function
+
+```js
+let regex = /ERROR:/;
+//prints: ['ERROR:', index: 8, input: 'INFO:Ok;ERROR:Something broke;', groups: undefined]
+console.log(regex.exec('INFO:Ok;ERROR:Something broke;'));
+```
 
