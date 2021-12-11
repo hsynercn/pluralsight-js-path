@@ -237,3 +237,120 @@ Changing Function context and Built-in Functions
 
 Understanding Function Context
 
+This refers to current executing context.
+```js
+function hello() {
+    console.log("Hello");
+    console.log(this); //
+}
+hello(); //Window {0: Window, window: Window, self: Window, document: document, name: '', location: Location, …}
+```
+
+When we declare function in an object.
+```js
+let greeting = {};
+greeting.sayHi = function() {
+    console.log(this);
+}
+greeting.sayHi(); //{sayHi: ƒ}
+```
+
+Constructor function example. When we invoke a function with a new keyword JavaScript implicitly creates an empty object within the function before returning it.
+```js
+function sayHi() {
+    console.log(this);
+}
+let greeting = new sayHi(); //empty object
+```
+
+What is the **call** Method?
+
+Every JavaScript function object has a few properties that come out of the box, one of these properties is the call method, and we can pass another object as an argument to this call method.
+```js
+let person1 = {name: 'John', age: 22};
+let person2 = {name: 'Mary', age: 26};
+let sayHi = function() {
+    console.log('Hi, ' + this.name);
+}
+sayHi.call(person1); //Hi, John
+sayHi.call(person2); //Hi, Mary
+```
+
+Function call method with parameters.
+
+```js
+let person = {name: "John", age: 22};
+let sayMessage = function(message) {
+    console.log(message + " " + this.name);
+}
+sayMessage.call(person, 'Hi'); //Hi John
+```
+
+What is the apply Method?
+
+Similar to call every function object also has an apply method. Call and apply are similar. Call accepts an arguments list, while apply accepts a single array of arguments.
+
+```js
+function hello(name, profession) {
+    console.log("My name is " + name + " and I am a " + profession + ".");
+    console.log(this);
+}
+hello("John", "student");
+hello.apply(undefined, ["John", "student"]);// we are not changing the this value
+hello.call(undefined, "John", "student");
+```
+
+***apply**: array input with similar elements
+**call**: individual arguments of varying type
+
+What is bind Method?
+
+We can change the 'this' object with call and apply. With bind method we can copy a function and then change the 'this' object.
+
+```js
+let person = {
+    name: "Mary",
+    getName: function() {
+        return this.name;
+    }
+};
+let person2 = {name: 'John'};
+let getNameCopy = person1.getName.bind(person2);
+console.log(getNameCopy()); //John
+```
+
+Using Built-in Functions
+
+eval
+
+```js
+let x = 1;
+let y = 2;
+console.log(eval('x + y + 1')); //4
+```
+
+parseInt
+
+```js
+console.log(parseInt("22")); //22
+console.log(parseInt("32", 10)); //we can give a base
+console.log(parseInt("111111", 2)); //63
+```
+
+parseFloat
+
+```js
+console.log(parseFloat('3.99')); //3.99
+```
+
+escape and unescape
+
+Escape computes a new string in which certain characters have been replaced by a hexadecimal escape sequence. Unescape reverts it.
+
+```js
+console.log(escape('text')); //text
+console.log(escape(' ')) //%20
+//reverse operation
+console.log(unescape('%20')) // ' '
+```
+
