@@ -354,3 +354,77 @@ console.log(escape(' ')) //%20
 console.log(unescape('%20')) // ' '
 ```
 
+**Summary**
+- apply and call
+- bind
+- Built-in functions
+
+Constructing Rest Parameters and the Spread Operator
+
+What Are Default Parameters?
+
+We can give defaults values to function parameters.
+
+```js
+function hello(name = "World") {
+    console.log("Hello " + name);
+}
+hello(); //Hello World
+hello("Bill"); //Hello Bill
+```
+
+Constructing Rest Parameters
+
+... makes names a rest parameter, and it allows multiple parameters.
+
+```js
+let print = function(...values) {
+    values.forEach(value => console.log(value));
+}
+print(1, 2 ,3); 
+//1
+//2
+//3
+```
+
+```js
+let print = function(firstValue, ...values) {
+    console.log("First value:" + firstValue);
+    values.forEach(value => console.log(value));
+}
+print(1, 2 ,3); 
+//First value:1
+//2
+//3
+```
+
+Using the Spread Operator
+
+Opposite of rest parameter.
+
+```js
+let print = function(value1, value2, value3) {
+    console.log(value1);
+    console.log(value2);
+    console.log(value3);
+}
+let myValues = [1 ,2 , 3];
+print(...myValues);
+//1
+//2
+//3
+```
+Spreads out the string characters.
+```js
+let myString = "test";
+[...myString].forEach(char => console.log(char))
+//t
+//e
+//s
+//t
+```
+
+**Summary**
+- Setting default parameters
+- Defining Rest parameters
+- Using the spread operator
