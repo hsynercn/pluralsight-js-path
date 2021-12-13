@@ -263,7 +263,7 @@ WeakMap
 - Maps vs. WeakMaps
 
 
-Exploring Typed Arrays
+## 5. Exploring Typed Arrays
 
 **Typed Arrays**: Array-like objects that provide a mechanism for accessing raw binary data. Handles direct memory allocation.
 
