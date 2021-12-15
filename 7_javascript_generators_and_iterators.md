@@ -126,6 +126,113 @@ for(const value of mySet) {
 //2
 ```
 
+Iterating through JSON Data
+
+```js
+let data = {
+    "food": [
+        {
+            "id": 1,
+            "name": "apple",
+            "calories": 88,
+            "dietary_preferences": ["vegan"],
+            "servingSize": 6,
+            "servingSizeUnits": "oz"
+        },
+        {
+            "id": 1,
+            "name": "chicken",
+            "calories": 125,
+            "dietary_preferences": ["keto"],
+            "servingSize": 3,
+            "servingSizeUnits": "oz"
+        },
+        {
+            "id": 1,
+            "name": "milk",
+            "calories": 240,
+            "dietary_preferences": ["keto"],
+            "servingSize": 8,
+            "servingSizeUnits": "oz"
+        }
+    ],
+    "users": {
+        "id": 1,
+        "firstName": "Bill",
+        "lastName": "Kill",
+        "email": "asd@asd.com"
+    }
+}
+const it = data.food[Symbol.iterator]();
+let position = it.next();
+while(!position.done) {
+    console.log(position.value);
+    position = it.next();
+}
+//{id: 1, name: 'apple', calories: 88, servingSize: 6, servingSizeUnits: 'oz'}
+//{id: 1, name: 'chicken', calories: 125, servingSize: 3, servingSizeUnits: 'oz'}
+//{id: 1, name: 'milk', calories: 240, servingSize: 8, servingSizeUnits: 'oz'}
+```
+
+Iterable Object:
+- It can be enumerated with a for..of loop
+- It adheres to the iterator protocol
+- It returns an object with an object that has a value and done property
+
+Custom iterators can return extra data.
+
+Custom Iterators
+
+```js
+let idx = 0;
+const veganOnly = data.filter(food =>{
+    return food.dietary_preferences.includes('vegan');
+});
+const veganIterable = {
+    [Symbol.iterator]() {
+        return {
+            [Symbol.iterator]() {
+                return this;
+            },
+            next() {
+                const current = veganOnly[idx];
+                idx++;
+                if(current) {
+                    return {value: current, done: false};
+                } else {
+                    return {value: current, done:true};
+                }
+            }
+        }
+    }
+}
+```
+
+Iterator result interface:
+- property: done, boolean, **required**
+- property: value, anything if value is undefined, may be absent
+- property: next, function, **required**
+- property: throw, method, optional
+- property: return, method, optional
+
+This tutorial is shitty, so I didn't take extra notes.
+
+**Summary**
+- Defined iterables and iterators
+- Built in iterables
+- Creating custom iterators
+- Custom iteration of functions
+- Implemented optional methods on custom iterator
+
 ## 3. Generator Functions
+
+Intro
+- Generator functions
+- The 'Yield' keyword
+- What is yield delegation?
+- Early completion of a generator
+- Generator error handling
+
+**Generator Function**: A function that can be paused and resumed at a later time, while having ability to pass values to and from the function at each pause point.
 
 ## 4. Real-world Examples and Cancelable Async Flows(CAF)
