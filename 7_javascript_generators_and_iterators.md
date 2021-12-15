@@ -235,4 +235,19 @@ Intro
 
 **Generator Function**: A function that can be paused and resumed at a later time, while having ability to pass values to and from the function at each pause point.
 
+* Generators are functions that can be exited and later re-entered. Their context (variable bindings) will be saved across re-entrances.
+
+
+Executing the generator function alone **does not execute** its containing code.
+```js
+function *timeStampGenerator() {
+    console.log(Date.now());
+}
+
+timeStampGenerator(); //executing generator function does not execute function itself
+const it = timeStampGenerator();
+
+
+```
+
 ## 4. Real-world Examples and Cancelable Async Flows(CAF)
