@@ -25,6 +25,17 @@ What Are Modules
 - Control access
 - Reference its own dependencies
 
+Module Considerations
+- Modules are singletons.
+- Properties are bound
+- Exports are static
+- One module fer file
+
+**Summary**
+- Set up our demo environment
+- What are modules?
+- Module considerations
+
 ## 3. Creating Module
 
 ## 4. Using Modules
