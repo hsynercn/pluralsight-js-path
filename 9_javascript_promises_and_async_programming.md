@@ -291,3 +291,115 @@ Ways to queue promises
 - race
 
 ## 5. Iterating with Async/Await
+
+JavaScript promises are kind of old for some people. If JavaScript already had promises why did it introduce async/await.
+
+- Async/await is syntactic sugar, it is not a new paradigm
+
+**async**: Asynchronous functions, these type of functions will return an implicit promise.
+
+```js
+//return value is wrapped in a promise
+async function getNames() {
+    return [];
+}
+//or
+const getValue = async () => {
+    return [];
+}
+ ```
+
+**await**:Must be used inside of async. Only blocks current function.
+
+```js
+const getNames = async () => {
+    await someFunc();
+    doSomethingElse();
+}
+```
+
+Awaiting a Call
+
+```js
+const {data} = await axios.get("http://localhost:3000/users");
+console.log(data);
+```
+
+Promise based implementation:
+```js
+axios.get("http://localhost:3000/users")
+.then(({data}) => {
+    console.log(JSON.stringify(data));
+});
+```
+
+Await based implementation:
+```js
+const {data} = await axios.get("http://localhost:3000/users");
+console.log(JSON.stringify(data));
+```
+
+Handling Errors with Async/Await
+
+```js
+try {
+    const {data} = await axios.get("http://localhost:3000/userssss");// error 404
+    console.log(JSON.stringify(data));
+} catch (error) {
+    console.log(error);
+}
+```
+
+Chaining Async/Await to Combat Race Conditions
+
+```js
+function async chain() {
+    const {data} = await axios.get("http://localhost:3000/orders/1");
+    const {data: address} = await axios.get(`http://localhost:3000/addresses/${data.shippingAddress}`);
+    console.log(`Cist: ${address.city}`);
+}
+```
+
+Awaiting Concurrent Requests
+
+```js
+function await concurrent() {
+    const orderStatus = axios.get("http://localhost:3000/ordersStatuses");
+    const orders = axios.get("http://localhost:3000/orders");
+
+    //we use await
+    const {data: statuses} = await orderStatus;
+    const {data: order} = await orders;
+
+    console.log(JSON.stringify(statuses));
+    console.log(JSON.stringify(order));
+}
+```
+
+Awaiting Parallel Calls
+
+```js
+//the parallel function wont't end until all of our promises are done
+function async parallel() {
+    await Promise.all([
+        //promise 1
+        (async () => {
+            const {data} = await axios.get("http://localhost:3000/orders/1");
+            console.log(JSON.stringify(data));
+        })(),
+        //promise 2
+        (async () => {
+            const {data} = await axios.get("http://localhost:3000/orders/2");
+            console.log(JSON.stringify(data));
+        })()
+    ]);
+}
+```
+
+**Summary**
+Promise States:
+- Pending
+- Fulfilled
+- Rejected
+- async/await
+- promises
