@@ -44,6 +44,56 @@ Browser Sandbox: JavaScript running in the browser is restricted.
 - **Only browser APIs**: Limited access to resources allowed by user
 - **Same origin only**: Code and data from different sites cannot interact
 
+Node.js is a runtime environment for JavaScript based on the V8 engine. It allows JavaScript code to run outside the browser.
+
+| Node.js      | Browser |
+| ----------- | ----------- |
+|Downloaded from the web|Loaded from local files|
+|Untrusted and highly restricted|Trusted and highly privileged|
+|Limited blast radius|May lead to server compromise, risky|
+
+JavaScript Security Pitfalls
+- DYNAMIC TYPE SYSTEM: Abusing conversions and comparisons
+- DYNAMIC CODE EXECUTION: Interpreting untrusted data as code
+- PROTOTYPAL INHERITANCE: Modifying behavior of child objects  
+
+Dynamic nature of JavaScript can lead to security bugs.
+
+Dynamic type system pitfalls
+- Automatic conversions: Unexpected code may be executed
+- Loose comparisons: Security checks may be bypassed
+
+Always **"use strict"** mode.
+
+How to Exploit the Bug?
+
+Work backwards from identified flaw in the code.
+
+Modify data to confuse the type system
+- Mixed data types
+- Arrays and objects
+- Missing properties
+
+Inspect original HTTP request.
+
+Inject malicious payload using browser development tools.
+
+Deliver it to the application.
+
+Fixing the Code
+- Use strict mode
+- **Do not use loose comparison (==)**
+    - Use === instead
+    - Consider using Object.is
+- Verified types of untrusted data items
+
+**Summary**
+- Dynamic nature of JavaScript code can lead to vulnerabilities
+    - Dynamic typing
+    - Dynamic code execution
+    - Prototypal inheritance
+- Security bugs in the browser may become an attack vector
+- Vulnerabilities in Node.js code can lead to serious data breaches
 
 ## 3. Preventing Code Injection Attacks
 
