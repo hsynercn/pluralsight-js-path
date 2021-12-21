@@ -97,6 +97,106 @@ Fixing the Code
 
 ## 3. Preventing Code Injection Attacks
 
+Overview
+- Dynamic code execution
+- Unsafe functions
+- Impact of remote code execution
+    - Denial of service
+    - Server takeover
+- Safe coding patterns
+
+Code Injection Attacks: Send code as data, parse data on server and execute malicious code.
+
+Dynamic Code Execution
+
+JavaScript code can be loaded from Web, files, or user input.
+- **PARSE**: Transform source code into abstract syntax tree
+- **COMPILE**: Generate bytecode just-in-time
+- **EXECUTE**: Run bytecode instructions
+
+JavaScript can generate and execute new code at runtime.
+
+```js
+console.log(eval("1 + 1")); //2
+```
+Unsafe Functions
+
+| Node.js      | Browser |
+| ----------- | ----------- |
+|eval(code)|f = new Function('param', code)|
+||f('argument')|
+|Direct and indirect invocation|Invoke like a function|
+|Global and current scope|Only global scope|
+
+Also these functions have unsafe versions, they can accept string parameters which they can execute.
+**setTimeout:** Execute provided code after a specified delay
+**setInterval** Repeatedly execute provided code with a specified delay between
+
+Finding Unsafe Code
+
+Modify data to inject the code
+- Track all input data, HTML form, cookies, HTTP requests to unsafe calls
+- Unsafe function calls named as **sinks**
+- **Taint analysis** we need to track data to unsafe function calls
+- Transformations, all changes made on input data
+
+Work backwards from the code to build payload.
+
+Inspect original HTTP request.
+
+Inject malicious payload using browser development tools.
+
+Deliver it to the application.
+
+**Injection Attacks:** Passing untrusted input data to any interpreter without input validation and sanitization may be exploitable.
+
+Exploiting the Vulnerability
+
+- Login screen return URL
+- Attack
+    - Hijack
+    - Inject
+    - Deliver
+- Denial of Service(DoS)
+- Sensitive data leak
+
+Impact of Code Injection Attacks
+- Denial of service, crash app and delete files
+- Modify application logic
+    - Bypass access control
+    - Compromise data integrity
+    - Steal sensitive data
+- Server takeover
+
+Web Shell: A powerful tool for attackers to gain information about the compromised system.
+
+Fixing the Code
+- Avoid unsafe functions
+- Validate input
+    - Prefer allow lists over lock lists
+- Sanitize data passed to interpreters
+- Apply principle of the least authority
+
+ Unsafe Code in Third-party Libraries
+ - npm: the JavaScript package manager
+ - Third-party packages may be prone to code injection
+ - Validate input data before passing
+ - External packages need to be audited for use of unsafe functions
+
+We need to validate input data before sending external libraries. We can check these modules for unsafe function uses.
+
+For example math module eval function can exploit function constructor.
+
+**Summary**
+- Avoid passing untrusted data to JavaScript engine
+- Identify suspected code
+    - eval
+    - new Function
+    - setTimeout and setInterval
+- Audit third-party libraries for use of unsafe code
+
 ## 4. Defending against Prototype Pollution
+
+
 
 ## 5. Testing Your Code
