@@ -197,6 +197,68 @@ For example math module eval function can exploit function constructor.
 
 ## 4. Defending against Prototype Pollution
 
+Overview
+- JavaScript prototypal inheritance
+- Modifying the prototype chain
+    - Parsing JSON data
+    - Dynamic property keys
+- Impact of prototype pollution
+- Hardening code against attacks
+
+Each JavaScript object has a chain of zero or more prototype objects. Allowing modification of the prototype chain may change the behavior of our code in ways that hard to predict. This type of vulnerabilities is called prototype pollution.
+
+Attacker sends a malicious JSON, server parses it and merges parsed data with application object. This modifies code behavior. 
+
+Understanding Prototypes
+
+Inheritance models
+- CLASSES: Static hierarchy of types
+- PROTOTYPES: Dynamic chain of objects
+
+Prototype Chain
+- Each object has a prototype
+- The chain ends with **null**
+- Inherited properties
+- Only own properties are mutated
+
+Polluting the Object Prototype
+- Denial of service
+- for-in loop manipulation
+- Property injection
+    - Security check bypass
+    - SQL and NoSQL injections
+- Remote code execution
+
+```js
+const user = {name: 'Full Name'};
+const malicious = {isAdmin: true};  //isAdmin is true for admin users only
+user['__proto__'] = malicious; //Pollution
+console.log(user.isAdmin); //true, Escalation of privilege
+```
+
+ Fixing the Code
+ - Validate JSON schema
+ - Freeze the prototype
+    - Object.freeze
+- Create objects without prototype
+    - Object.create(null, ...)
+- Use **Map** instead of {}
+
+Introducing Prototype Pollution through 3rd Party Libraries
+- Utility libraries
+- Merging, cloning, extending
+- Examples
+    - jQuery
+    - Lodash
+    - Hapi
+
+**Summary**
+- Prototype inheritance can be exploited
+- Property mutation with __proto__ key
+- Mitigation techniques
+    - Input validation
+    - Map instead of {}
+    - Freezing or removing the prototype
 
 
 ## 5. Testing Your Code
