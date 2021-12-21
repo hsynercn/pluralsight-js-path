@@ -229,6 +229,27 @@ Polluting the Object Prototype
     - SQL and NoSQL injections
 - Remote code execution
 
+Finding Prototype Pollution in the Code
+
+Code smells:
+- Property mutation with untrusted key and value
+- Recursive object merging
+- Object cloning
+- Property access by path
+
+```js
+//Deep merge two objects
+function merge(target, source) {
+    for(let prop in source) {
+        if(typeof target[prop] === 'object' && typeof source[prop] ==='object') {
+            merge(target[prop], source[prop])
+        }
+        target[prop] = source[prop];
+    }
+    return target;
+}
+```
+
 ```js
 const user = {name: 'Full Name'};
 const malicious = {isAdmin: true};  //isAdmin is true for admin users only
@@ -262,3 +283,90 @@ Introducing Prototype Pollution through 3rd Party Libraries
 
 
 ## 5. Testing Your Code
+
+
+Overview
+- Automated security testing
+- Preventing use of unsafe function
+- Detecting prototype pollution
+- Detect vulnerabilities third-party libraries
+
+Security Testing Techniques
+- SAST: Static application security testing, focused on analysis of code and binaries to detect known bad patterns.
+- DAST: Dynamic application security testing, exercise a running application and look for suspicious responses to variety of payloads.
+- IAST: Interactive application security testing, this approach requires that application code is instrumented to detect malicious code behavior within application, agent reports detected attacks.
+
+Security testing can be really powerful, but there are so many types of security flaws that no single testing technique can discover all of them.
+
+
+|SAST|DAST|
+|---|---|
+|Source code|Running application|
+|Known bad code patterns|Malicious payloads|
+|Safe|May be destructive, don't run on PROD|
+|Compilers, linters, scanners|Automated tests and scanners|
+
+Finding Unsafe Code Using ESLint
+
+Linters are lightweight code analysis tools that flag bugs and coding errors.
+- **Code**: Parse code and analyze the abstract syntax tree(AST)
+- **Extensible**: Comes with a set of bundled checks
+- **Fast**: Can be used by IDEs and build pipeline
+
+ESLint:
+- npm install eslint --saveFev
+- ./node_modules/.bin/eslint --init
+
+ESLint configuration file:
+
+```json
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2020": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 11
+    },
+    "rules": {
+        "no-eval": "error",
+        "no-implied-eval": "error",
+        "no-new-func": "error"
+    }
+}
+```
+
+Detecting Prototype Pollution with Unit Tests
+- Reliable and repeatable
+- Easy payload delivery
+- Inspect program state after attack
+    - Input violation assumptions about types
+    - Code injection effects
+    - Detect prototype pollution
+
+Popular Security Testing Tools for JavaScript
+- SAST:
+    - ESLint
+    - GitHub Code Scanning and LGMT
+    - semgrep
+- OWASP ZAP
+    - Many commercial alternatives
+- Dependency management
+    - **npm audit**: Scans dependencies
+    - Retire.js
+    - Dependency-Track
+    - Snyk
+
+How can we find vulnerable packages:
+- npm audit
+
+**Summary**
+- Security testing techniques
+    - SAST
+    - DAST
+    - IAST
+- Preventing vulnerabilities with automated tests
+    - ESLint
+    - Unit tests
+    - npm audit
