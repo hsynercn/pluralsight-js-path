@@ -12,7 +12,7 @@ New ES2015 data structure: Maps, Sets, WeakMaps, WeakSets
 
 Loops: For and foreach iterate over each element in an array.
 
-In a standard loop we can exit the loop with break. Restarting the iteration is not easy.
+In a standard loop we can exit the loop with break but restarting the iteration is not easy.
 ```js
 for(let i = 0: i < 10: i++) {
     if(i > 2) break;
@@ -69,10 +69,13 @@ while(!res.done) {
 ```
 
 What is an Iterable?
+
+An object that allows iteration of itself.
+
 - An array is a built-in iterable
 - There ate other built-in iterables (strings, maps, and sets)
-- Iterables implement the @@iterator method
-- Symbol.iterator is a well-known symbol in JavaScript
+- Iterables implement the @@iterator method, must have a property with a Symbol.iterator key
+- Symbol.iterator is a well-known symbol in JavaScript it specifies the default iterator for an object
 
 for..of loops:
 - This type of loop only works with iterable objects
