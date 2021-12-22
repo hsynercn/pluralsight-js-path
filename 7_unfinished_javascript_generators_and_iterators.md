@@ -243,14 +243,34 @@ Intro
 
 Executing the generator function alone **does not execute** its containing code.
 ```js
+//we put an asterisk before the function name
 function *timeStampGenerator() {
     console.log(Date.now());
 }
 
 timeStampGenerator(); //executing generator function does not execute function itself
-const it = timeStampGenerator();
-
-
+const it = timeStampGenerator(); //returns an iterator
+it.next();
 ```
+
+**Yield:** Yield keyword signals the pause point of a generator function until next call.
+
+```js
+function* timeStampGenerator() {
+    console.log('execution start');
+    yield;
+    console.log('execution continued');
+}
+const it = timeStampGenerator();
+it.next();//print execution start
+it.next();//print execution continued
+```
+
+Possible Yield Actions
+- Send a value to the iterator
+    - yield 'goes to iterator'
+- Receive a value from the iterator
+    - const x = yield;
+    - it.next('value for x')//=> x is now 'value for x'
 
 ## 4. Real-world Examples and Cancelable Async Flows(CAF)
